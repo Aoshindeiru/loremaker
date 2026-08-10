@@ -27,7 +27,7 @@ export default function Home() {
         {/* Başlık */}
         <div className="text-center space-y-4">
           <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter">
-            Lore<span className="text-[#2283C4]">ify</span>
+            Lore<span className="text-[#2283C4]">kai</span>
           </h1>
           <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto font-light">
             Dağınık fikirlerini saniyeler içinde profesyonel bir Fandom wikisine dönüştür.
