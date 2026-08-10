@@ -24,24 +24,23 @@ export default function Home() {
 
       <div className="z-10 w-full max-w-3xl flex flex-col items-center gap-10">
         
-        {/* Başlık - Düzeltilmiş "e" ve Güçlendirilmiş Kırmızı Geçişi */}
+        {/* Başlık - %80 Oranında Kusursuzlaştırılmış Renk Geçişleri */}
         <div className="text-center space-y-4">
-          {/* uppercase sınıfı kaldırıldı, harfler manuel ayarlandı */}
           <h1 className="text-7xl md:text-9xl font-black italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none">
             <span className="text-white">e</span>
             
-            {/* X: Kırmızı harfin yarısına kadar baskın tutuldu, sonra Mora geçiyor */}
-            <span className="bg-gradient-to-r from-[#D52F2F] via-[#D52F2F] to-[#8338EC] text-transparent bg-clip-text">
+            {/* X: %80'e kadar tamamen Kırmızı, sadece son anlarda Mora eriyor */}
+            <span className="bg-gradient-to-r from-[#D52F2F] from-[80%] to-[#8338EC] text-transparent bg-clip-text">
               X
             </span>
             
-            {/* P: Saf Mor (Hollow Purple) */}
+            {/* P: Saf Mor (Hollow Purple Merkezi) */}
             <span className="text-[#8338EC]">
               P
             </span>
             
-            {/* L: Mordan Maviye Geçiş */}
-            <span className="bg-gradient-to-r from-[#8338EC] to-[#2283C4] text-transparent bg-clip-text">
+            {/* L: Başlangıçta Mor, sonrasında yavaşça Maviye geçiyor */}
+            <span className="bg-gradient-to-r from-[#8338EC] from-[10%] to-[#2283C4] text-transparent bg-clip-text">
               L
             </span>
             
