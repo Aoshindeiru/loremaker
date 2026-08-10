@@ -24,17 +24,18 @@ export default function Home() {
 
       <div className="z-10 w-full max-w-3xl flex flex-col items-center gap-10">
         
-        {/* Başlık - Parçalanmış Kusursuz Renk Geçişleri */}
+        {/* Başlık - Düzeltilmiş "e" ve Güçlendirilmiş Kırmızı Geçişi */}
         <div className="text-center space-y-4">
-          <h1 className="text-7xl md:text-9xl font-black uppercase italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none">
-            <span className="text-white">E</span>
+          {/* uppercase sınıfı kaldırıldı, harfler manuel ayarlandı */}
+          <h1 className="text-7xl md:text-9xl font-black italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none">
+            <span className="text-white">e</span>
             
-            {/* X: Kırmızıdan Mora Geçiş */}
-            <span className="bg-gradient-to-r from-[#D52F2F] to-[#8338EC] text-transparent bg-clip-text">
+            {/* X: Kırmızı harfin yarısına kadar baskın tutuldu, sonra Mora geçiyor */}
+            <span className="bg-gradient-to-r from-[#D52F2F] via-[#D52F2F] to-[#8338EC] text-transparent bg-clip-text">
               X
             </span>
             
-            {/* P: Tamamen Mor (Purple'ın P'si) */}
+            {/* P: Saf Mor (Hollow Purple) */}
             <span className="text-[#8338EC]">
               P
             </span>
@@ -44,7 +45,7 @@ export default function Home() {
               L
             </span>
             
-            {/* ORE: Tamamen Mavi */}
+            {/* ORE: Saf Mavi */}
             <span className="text-[#2283C4]">
               ORE
             </span>
