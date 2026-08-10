@@ -24,17 +24,30 @@ export default function Home() {
 
       <div className="z-10 w-full max-w-3xl flex flex-col items-center gap-10">
         
-        {/* Başlık - Kırmızıdan Maviye Kusursuz Mor Geçişi (Hollow Purple Gradient) */}
+        {/* Başlık - Parçalanmış Kusursuz Renk Geçişleri */}
         <div className="text-center space-y-4">
           <h1 className="text-7xl md:text-9xl font-black uppercase italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none">
             <span className="text-white">E</span>
             
-            {/* XPL: Kırmızı (#D52F2F) -> Mor (#8338EC) -> Mavi (#2283C4) Gradyanı */}
-            <span className="bg-gradient-to-r from-[#D52F2F] via-[#8338EC] to-[#2283C4] text-transparent bg-clip-text">
-              XPL
+            {/* X: Kırmızıdan Mora Geçiş */}
+            <span className="bg-gradient-to-r from-[#D52F2F] to-[#8338EC] text-transparent bg-clip-text">
+              X
             </span>
             
-            <span className="text-[#2283C4]">ORE</span>
+            {/* P: Tamamen Mor (Purple'ın P'si) */}
+            <span className="text-[#8338EC]">
+              P
+            </span>
+            
+            {/* L: Mordan Maviye Geçiş */}
+            <span className="bg-gradient-to-r from-[#8338EC] to-[#2283C4] text-transparent bg-clip-text">
+              L
+            </span>
+            
+            {/* ORE: Tamamen Mavi */}
+            <span className="text-[#2283C4]">
+              ORE
+            </span>
           </h1>
           <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto font-light mt-4">
             Dağınık fikirlerini saniyeler içinde profesyonel bir Fandom wikisine dönüştür.
