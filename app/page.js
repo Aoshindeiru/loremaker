@@ -24,15 +24,15 @@ export default function Home() {
 
       <div className="z-10 w-full max-w-3xl flex flex-col items-center gap-10">
         
-        {/* Başlık - eXPLore */}
+        {/* Başlık - Agresif ve Teknolojik Logo (L harfi sorunu çözüldü) */}
         <div className="text-center space-y-4">
-          <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter">
-            <span className="text-white">e</span>
+          <h1 className="text-7xl md:text-9xl font-black uppercase italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none">
+            <span className="text-white">E</span>
             <span className="text-[#D52F2F]">X</span>
             <span className="text-[#8338EC]">P</span>
-            <span className="text-[#2283C4]">Lore</span>
+            <span className="text-[#2283C4]">LORE</span>
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto font-light">
+          <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto font-light mt-4">
             Dağınık fikirlerini saniyeler içinde profesyonel bir Fandom wikisine dönüştür.
           </p>
         </div>
