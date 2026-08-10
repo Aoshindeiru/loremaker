@@ -28,8 +28,8 @@ export default function Home() {
         <div className="text-center space-y-4">
           <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter">
             <span className="text-white">e</span>
-            <span className="text-[#D52F2F]">X</span>
-            <span className="text-white">P</span>
+            <span className="text-[#D52F2F]">XP</span>
+            
             <span className="text-[#2283C4]">Lore</span>
           </h1>
           <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto font-light">
