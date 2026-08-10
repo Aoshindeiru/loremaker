@@ -24,13 +24,17 @@ export default function Home() {
 
       <div className="z-10 w-full max-w-3xl flex flex-col items-center gap-10">
         
-        {/* Başlık - Agresif ve Teknolojik Logo (L harfi sorunu çözüldü) */}
+        {/* Başlık - Kırmızıdan Maviye Kusursuz Mor Geçişi (Hollow Purple Gradient) */}
         <div className="text-center space-y-4">
           <h1 className="text-7xl md:text-9xl font-black uppercase italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none">
             <span className="text-white">E</span>
-            <span className="text-[#D52F2F]">X</span>
-            <span className="text-[#8338EC]">P</span>
-            <span className="text-[#2283C4]">LORE</span>
+            
+            {/* XPL: Kırmızı (#D52F2F) -> Mor (#8338EC) -> Mavi (#2283C4) Gradyanı */}
+            <span className="bg-gradient-to-r from-[#D52F2F] via-[#8338EC] to-[#2283C4] text-transparent bg-clip-text">
+              XPL
+            </span>
+            
+            <span className="text-[#2283C4]">ORE</span>
           </h1>
           <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto font-light mt-4">
             Dağınık fikirlerini saniyeler içinde profesyonel bir Fandom wikisine dönüştür.
@@ -40,7 +44,7 @@ export default function Home() {
         {/* Metin Kutusu ve Buton */}
         <div className="w-full bg-[#0a0a0a] border border-gray-800 rounded-2xl shadow-2xl relative overflow-hidden transition-all hover:border-[#8338EC]/40">
           
-          {/* Gojo Satoru - Hollow Purple Gradient Çizgisi (Mavi -> Mor -> Kırmızı) */}
+          {/* Metin Kutusu Üst Çizgisi - Gradient */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#2283C4] via-[#8338EC] to-[#D52F2F]"></div>
           
           <textarea
