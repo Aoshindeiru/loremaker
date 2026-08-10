@@ -24,11 +24,13 @@ export default function Home() {
 
       <div className="z-10 w-full max-w-3xl flex flex-col items-center gap-10">
         
-        {/* Başlık - İnce "eXP" ve Kalın "Lore" Kontrastı ile Güncellendi */}
+        {/* Başlık - Kırmızı "X" Vurgusu */}
         <div className="text-center space-y-4">
-          <h1 className="text-6xl md:text-8xl tracking-tighter flex items-center justify-center gap-1">
-            <span className="font-light text-white">eXP</span>
-            <span className="font-extrabold text-[#2283C4]">Lore</span>
+          <h1 className="text-6xl md:text-8xl font-extrabold tracking-tighter">
+            <span className="text-white">e</span>
+            <span className="text-[#D52F2F]">X</span>
+            <span className="text-white">P</span>
+            <span className="text-[#2283C4]">Lore</span>
           </h1>
           <p className="text-gray-400 text-lg md:text-xl max-w-xl mx-auto font-light">
             Dağınık fikirlerini saniyeler içinde profesyonel bir Fandom wikisine dönüştür.
