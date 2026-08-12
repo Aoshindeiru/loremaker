@@ -18,40 +18,23 @@ export default function Home() {
   const handleForge = () => {
     if (!inputData) return;
     setLoading(true);
-    // 5 saniyelik Saf Gradyan Savaşı ve Mor Patlama süresi
+    // 3 saniyelik buton animasyon süresi
     setTimeout(() => {
       setLoading(false);
-      alert("Evrensel Çarpışma Tamamlandı! Fandom Paneli Açılıyor...");
-    }, 5000);
+      alert("Evren Yaratıldı! Fandom Paneli Açılıyor...");
+    }, 3000);
   };
 
   return (
     <main className={`min-h-screen transition-colors duration-75 relative overflow-x-hidden font-sans ${isLightMode ? 'bg-[#F5F5F7] text-[#1D1D1F]' : 'bg-[#000000] text-white selection:bg-[#AF52DE] selection:text-white'}`}>
       
-      {/* 5 SANİYELİK SAF GRADYAN ÇARPIŞMASI İÇİN ÖZEL CSS */}
+      {/* SADECE BUTON İÇİN YUMUŞAK GRADYAN ANİMASYONU */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes clashWar {
-            0% { background-position: 50% 50%; }
-            15% { background-position: 0% 50%; filter: brightness(1.2); } /* Kırmızı öne geçiyor */
-            35% { background-position: 100% 50%; filter: brightness(1.2); } /* Mavi öne geçiyor */
-            55% { background-position: 10% 50%; filter: brightness(1.3); } /* Kırmızı tekrar bastırıyor */
-            75% { background-position: 50% 50%; filter: brightness(1.5); } /* Ortada eşitleniyorlar */
-            100% { background-position: 50% 50%; filter: brightness(1); }
-          }
-          @keyframes purpleOverload {
-            0%, 75% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-            76% { transform: translate(-50%, -50%) scale(0.05); opacity: 1; filter: brightness(2); }
-            85% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; filter: brightness(1.2); }
-            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; filter: brightness(1); }
-          }
-          @keyframes containerShake {
-            0%, 70% { transform: scale(0.98); }
-            71%, 73%, 75% { transform: scale(0.98) translateX(-15px); }
-            72%, 74%, 76% { transform: scale(0.98) translateX(15px); }
-            77% { transform: scale(0.98) translateX(0); }
-            80% { transform: scale(1.02); }
-            100% { transform: scale(1); }
+          @keyframes btnGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
           }
         `
       }} />
@@ -113,46 +96,19 @@ export default function Home() {
             Aklındaki karmaşık fikirleri, saniyeler içinde kusursuz bir Fandom veritabanına dönüştür.
           </p>
 
+          {/* STANDART METİN KUTUSU (Patlama/Efekt Yok) */}
           <div className={`w-full max-w-2xl rounded-3xl relative overflow-hidden transition-all border backdrop-blur-2xl ${
-              loading 
-                ? 'border-[#AF52DE] shadow-[0_0_60px_rgba(175,82,222,0.8)] [animation:containerShake_5s_ease-in-out]' 
-                : isLightMode 
-                  ? 'bg-white/60 border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.15)] focus-within:border-white' 
-                  : 'bg-[#1C1C1E]/60 border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.4)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.25)] focus-within:border-white/20'
+              isLightMode 
+                ? 'bg-white/60 border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.15)] focus-within:border-white' 
+                : 'bg-[#1C1C1E]/60 border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.4)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.25)] focus-within:border-white/20'
             }`}>
             
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF3B30] opacity-90"></div>
             
-            {/* SAF GRADYAN SAVAŞI (Yuvarlak YOK, Sadece Renk Duvarı) */}
-            {loading && (
-              <div className="absolute inset-0 z-30 bg-black overflow-hidden rounded-3xl pointer-events-none">
-                
-                {/* Metin Kutusunun Tamamını Kaplayan Animasyonlu Gradyan (Bir sağa bir sola kayar) */}
-                <div 
-                  className="absolute inset-0 opacity-90"
-                  style={{
-                    background: 'linear-gradient(90deg, #FF3B30 0%, #FF3B30 25%, #AF52DE 50%, #007AFF 75%, #007AFF 100%)',
-                    backgroundSize: '300% 100%',
-                    animation: 'clashWar 5s ease-in-out forwards'
-                  }}
-                ></div>
-
-                {/* Sonda Eşitlendiklerinde Merkezden Patlayan Saf Mor Enerji */}
-                <div 
-                  className="absolute top-1/2 left-1/2 w-[150%] aspect-square rounded-full bg-[#AF52DE]"
-                  style={{
-                    transform: 'translate(-50%, -50%) scale(0)',
-                    animation: 'purpleOverload 5s ease-in-out forwards'
-                  }}
-                ></div>
-
-              </div>
-            )}
-
             <textarea
               rows={5}
-              className={`w-full bg-transparent text-lg p-8 focus:outline-none resize-none leading-relaxed font-medium ${
-                loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'
+              className={`w-full bg-transparent text-lg p-8 focus:outline-none resize-none leading-relaxed font-medium transition-colors duration-300 ${
+                loading && !isLightMode ? 'text-white/50' : '' 
               } ${isLightMode ? 'text-[#1D1D1F] placeholder-[#86868B]' : 'text-[#F5F5F7] placeholder-[#8E8E93]'}`}
               placeholder="Evrenini anlatmaya başla..."
               value={inputData}
@@ -160,18 +116,36 @@ export default function Home() {
               disabled={loading}
             />
             
-            <div className={`flex justify-between items-center px-8 pb-6 pt-2 ${loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}`}>
+            <div className="flex justify-between items-center px-8 pb-6 pt-2">
               <span className={`text-xs font-bold tracking-widest uppercase transition-colors duration-75 ${isLightMode ? 'text-[#86868B]' : 'text-[#8E8E93]'}`}>
                 {inputData.length} KARAKTER
               </span>
               
+              {/* SADECE BURASI ANİMASYONLU - "EVRENİ YARAT" BUTONU */}
               <button
                 onClick={handleForge}
                 disabled={loading || inputData.length === 0}
-                className={`px-8 py-3 rounded-full font-bold transition-all duration-75 flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${isLightMode ? 'bg-[#1D1D1F] text-white hover:bg-[#AF52DE] shadow-md hover:shadow-lg' : 'bg-white text-black hover:bg-[#AF52DE] hover:text-white shadow-[0_4px_14px_0_rgba(255,255,255,0.1)] hover:shadow-[0_6px_20px_rgba(175,82,222,0.5)]'}`}
+                className={`px-8 py-3 rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed ${
+                  loading
+                    ? 'text-white border-transparent bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] bg-[length:200%_200%] [animation:btnGradient_2s_ease_infinite] shadow-[0_0_20px_rgba(175,82,222,0.6)]'
+                    : isLightMode 
+                      ? 'bg-[#1D1D1F] text-white hover:bg-[#AF52DE] shadow-md hover:shadow-lg disabled:opacity-50' 
+                      : 'bg-white text-black hover:bg-[#AF52DE] hover:text-white shadow-[0_4px_14px_0_rgba(255,255,255,0.1)] hover:shadow-[0_6px_20px_rgba(175,82,222,0.5)] disabled:opacity-50'
+                }`}
               >
-                Evreni Yarat
+                {loading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Yaratılıyor...
+                  </>
+                ) : (
+                  "Evreni Yarat"
+                )}
               </button>
+
             </div>
           </div>
         </div>
