@@ -18,10 +18,11 @@ export default function Home() {
   const handleForge = () => {
     if (!inputData) return;
     setLoading(true);
+    // 3 saniyelik kozmik çöküş (Big Bang) bekleme süresi
     setTimeout(() => {
       setLoading(false);
-      alert("Bu aşamada Fandom paneline geçilecek!");
-    }, 2000);
+      alert("Büyük Patlama (Big Bang) Gerçekleşti! Fandom Paneli Açılıyor...");
+    }, 3000);
   };
 
   return (
@@ -43,14 +44,11 @@ export default function Home() {
           <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm inline-block pr-4">LORE</span>
         </div>
 
-        {/* 2. Orta: Zenginleştirilmiş Menü Linkleri */}
+        {/* 2. Orta: Menü Linkleri */}
         <nav className={`hidden lg:flex items-center gap-8 font-semibold text-sm transition-colors duration-75 ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Özellikler</a>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Şablonlar</a>
-          <a href="#" className={`transition-all flex items-center gap-2 hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>
-            Keşfet 
-            <span className="bg-[#AF52DE]/20 text-[#AF52DE] text-[10px] px-2 py-0.5 rounded-full font-black tracking-wider">YENİ</span>
-          </a>
+          <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Keşfet</a>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Kaynaklar</a>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Fiyatlandırma</a>
         </nav>
@@ -105,19 +103,40 @@ export default function Home() {
             Aklındaki karmaşık fikirleri, saniyeler içinde kusursuz bir Fandom veritabanına dönüştür.
           </p>
 
-          <div className={`w-full max-w-2xl rounded-3xl relative overflow-hidden transition-all duration-75 border backdrop-blur-2xl ${isLightMode ? 'bg-white/60 border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.15)] focus-within:border-white' : 'bg-[#1C1C1E]/60 border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.4)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.25)] focus-within:border-white/20'}`}>
+          <div className={`w-full max-w-2xl rounded-3xl relative overflow-hidden transition-all duration-[800ms] ease-in-out border backdrop-blur-2xl ${
+              loading 
+                ? 'scale-95 border-[#AF52DE] shadow-[0_0_60px_rgba(175,82,222,0.8)]' 
+                : isLightMode 
+                  ? 'bg-white/60 border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.15)] focus-within:border-white scale-100' 
+                  : 'bg-[#1C1C1E]/60 border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.4)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.25)] focus-within:border-white/20 scale-100'
+            }`}>
             
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF3B30] opacity-90"></div>
             
+            {/* KARADELİK ANİMASYONU */}
+            {loading && (
+              <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none rounded-3xl bg-black/50 backdrop-blur-sm transition-all duration-500">
+                <div className="relative w-28 h-28 flex items-center justify-center">
+                  <div className="absolute w-full h-full rounded-full border-t-4 border-[#AF52DE] border-b-4 border-[#007AFF] animate-[spin_1.5s_linear_infinite] filter blur-[3px]"></div>
+                  <div className="absolute w-[140%] h-[140%] rounded-full border-r-2 border-[#FF3B30] border-l-2 border-[#AF52DE] animate-[spin_2s_linear_infinite_reverse] opacity-60"></div>
+                  <div className="absolute w-16 h-16 bg-black rounded-full shadow-[0_0_40px_20px_rgba(175,82,222,0.7)] animate-pulse"></div>
+                  <div className="absolute w-40 h-40 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#AF52DE]/30 via-transparent to-transparent animate-ping opacity-40"></div>
+                </div>
+              </div>
+            )}
+
             <textarea
               rows={5}
-              className={`w-full bg-transparent text-lg p-8 focus:outline-none resize-none leading-relaxed transition-colors duration-75 font-medium ${isLightMode ? 'text-[#1D1D1F] placeholder-[#86868B]' : 'text-[#F5F5F7] placeholder-[#8E8E93]'}`}
+              className={`w-full bg-transparent text-lg p-8 focus:outline-none resize-none leading-relaxed transition-all duration-500 font-medium ${
+                loading ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+              } ${isLightMode ? 'text-[#1D1D1F] placeholder-[#86868B]' : 'text-[#F5F5F7] placeholder-[#8E8E93]'}`}
               placeholder="Evrenini anlatmaya başla..."
               value={inputData}
               onChange={(e) => setInputData(e.target.value)}
+              disabled={loading}
             />
             
-            <div className="flex justify-between items-center px-8 pb-6 pt-2">
+            <div className={`flex justify-between items-center px-8 pb-6 pt-2 transition-all duration-500 ${loading ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
               <span className={`text-xs font-bold tracking-widest uppercase transition-colors duration-75 ${isLightMode ? 'text-[#86868B]' : 'text-[#8E8E93]'}`}>
                 {inputData.length} KARAKTER
               </span>
@@ -127,7 +146,7 @@ export default function Home() {
                 disabled={loading || inputData.length === 0}
                 className={`px-8 py-3 rounded-full font-bold transition-all duration-75 flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${isLightMode ? 'bg-[#1D1D1F] text-white hover:bg-[#AF52DE] shadow-md hover:shadow-lg' : 'bg-white text-black hover:bg-[#AF52DE] hover:text-white shadow-[0_4px_14px_0_rgba(255,255,255,0.1)] hover:shadow-[0_6px_20px_rgba(175,82,222,0.5)]'}`}
               >
-                {loading ? <span className="animate-pulse">Yaratılıyor...</span> : "Evreni Yarat"}
+                Evreni Yarat
               </button>
             </div>
           </div>
@@ -150,7 +169,6 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
           <div className={`backdrop-blur-2xl border p-10 rounded-3xl transition-all duration-75 ${isLightMode ? 'bg-white/70 border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl hover:border-[#FF3B30]/40' : 'bg-[#1C1C1E]/60 border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:border-[#FF3B30]/40 hover:shadow-[0_8px_30px_rgba(255,59,48,0.15)]'}`}>
             <div className="w-16 h-16 bg-[#FF3B30]/10 rounded-2xl flex items-center justify-center mb-8 text-[#FF3B30] font-black text-3xl shadow-sm">1</div>
             <h3 className={`text-2xl font-bold mb-4 tracking-tight ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>Taslağını Yaz</h3>
@@ -175,14 +193,12 @@ export default function Home() {
               Görselleri, sayfa hiyerarşisi ve iç linklemeleri yapılmış profesyonel bir Fandom sayfası saniyeler içinde önünde belirir.
             </p>
           </div>
-
         </div>
       </section>
 
       {/* --- 3. BÖLÜM: FOOTER --- */}
       <footer className={`relative z-10 w-full border-t pt-20 pb-12 px-8 mt-12 transition-colors duration-75 ${isLightMode ? 'bg-[#F5F5F7] border-gray-200' : 'bg-[#000000] border-white/10'}`}>
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
-          
           <div className="space-y-5">
             <h4 className={`font-bold text-sm tracking-widest uppercase ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>Platform</h4>
             <ul className={`space-y-4 font-medium text-sm ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
@@ -192,7 +208,6 @@ export default function Home() {
               <li><a href="#" className="hover:text-[#AF52DE] transition-colors">API Dokümantasyonu</a></li>
             </ul>
           </div>
-
           <div className="space-y-5">
             <h4 className={`font-bold text-sm tracking-widest uppercase ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>Araçlar</h4>
             <ul className={`space-y-4 font-medium text-sm ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
@@ -202,7 +217,6 @@ export default function Home() {
               <li><a href="#" className="hover:text-[#AF52DE] transition-colors">Tüm Araçlar</a></li>
             </ul>
           </div>
-
           <div className="space-y-5">
             <h4 className={`font-bold text-sm tracking-widest uppercase ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>Şirket</h4>
             <ul className={`space-y-4 font-medium text-sm ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
@@ -212,7 +226,6 @@ export default function Home() {
               <li><a href="#" className="hover:text-[#AF52DE] transition-colors">Kullanım Şartları</a></li>
             </ul>
           </div>
-
           <div className="space-y-5">
             <h4 className={`font-bold text-sm tracking-widest uppercase ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>Topluluk</h4>
             <ul className={`space-y-4 font-medium text-sm ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
@@ -222,14 +235,11 @@ export default function Home() {
               <li><a href="#" className="hover:text-[#AF52DE] transition-colors">Hata Bildir</a></li>
             </ul>
           </div>
-
         </div>
-
         <div className={`max-w-6xl mx-auto border-t pt-8 text-center font-medium text-xs transition-colors duration-75 ${isLightMode ? 'border-gray-300 text-[#86868B]' : 'border-white/10 text-[#A1A1A6]'}`}>
           <p>© 2026 expLORE. Tüm hakları saklıdır.</p>
         </div>
       </footer>
-
     </main>
   );
 }
