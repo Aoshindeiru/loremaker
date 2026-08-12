@@ -43,14 +43,11 @@ export default function Home() {
           <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm inline-block pr-4">LORE</span>
         </div>
 
-        {/* 2. Orta: Zenginleştirilmiş Menü Linkleri */}
+        {/* 2. Orta: Zenginleştirilmiş Menü Linkleri (YENİ rozeti kaldırıldı) */}
         <nav className={`hidden lg:flex items-center gap-8 font-semibold text-sm transition-colors duration-75 ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Özellikler</a>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Şablonlar</a>
-          <a href="#" className={`transition-all flex items-center gap-2 hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>
-            Keşfet 
-            <span className="bg-[#AF52DE]/20 text-[#AF52DE] text-[10px] px-2 py-0.5 rounded-full font-black tracking-wider">YENİ</span>
-          </a>
+          <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Keşfet</a>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Kaynaklar</a>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Fiyatlandırma</a>
         </nav>
