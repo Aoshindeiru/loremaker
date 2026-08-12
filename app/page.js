@@ -18,10 +18,10 @@ export default function Home() {
   const handleForge = () => {
     if (!inputData) return;
     setLoading(true);
-    // 3 saniyelik Hollow Purple çarpışma animasyonu
+    // 3 saniyelik Yetenek Ağı (Skill Tree) örülme süresi
     setTimeout(() => {
       setLoading(false);
-      alert("Hollow Purple Çarpışması Tamamlandı! Fandom Paneli Açılıyor...");
+      alert("Yetenek Ağı Örüldü! Fandom Paneli Açılıyor...");
     }, 3000);
   };
 
@@ -95,18 +95,28 @@ export default function Home() {
             
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF3B30] opacity-90"></div>
             
-            {/* HOLLOW PURPLE ÇARPIŞMA ANİMASYONU */}
+            {/* YETENEK AĞI (SKILL TREE) ANİMASYONU */}
             {loading && (
-              <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none rounded-3xl bg-black/70 backdrop-blur-md overflow-hidden transition-all duration-300">
-                {/* Kırmızı Orb soldan merkeze akıyor */}
-                <div className="absolute w-40 h-40 bg-[#FF3B30] rounded-full filter blur-[35px] animate-[ping_1s_ease-in-out_infinite] opacity-80 -translate-x-20"></div>
-                {/* Mavi Orb sağdan merkeze akıyor */}
-                <div className="absolute w-40 h-40 bg-[#007AFF] rounded-full filter blur-[35px] animate-[ping_1s_ease-in-out_infinite_reverse] opacity-80 translate-x-20"></div>
-                
-                {/* Merkezde Şiddetli Titreyen ve Elektrik Saçan Mor Enerji Küresi (Hollow Purple) */}
-                <div className="relative w-28 h-28 bg-[#AF52DE] rounded-full shadow-[0_0_60px_30px_rgba(175,82,222,0.9)] animate-pulse flex items-center justify-center">
-                  <div className="absolute inset-0 rounded-full border-4 border-white animate-[ping_0.4s_linear_infinite] opacity-80"></div>
-                  <div className="absolute w-12 h-12 bg-white rounded-full animate-ping opacity-90"></div>
+              <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none rounded-3xl bg-black/80 backdrop-blur-md overflow-hidden transition-all duration-300">
+                {/* Merkez Çekirdek Nokta */}
+                <div className="relative w-6 h-6 bg-[#AF52DE] rounded-full shadow-[0_0_25px_12px_rgba(175,82,222,0.9)] animate-pulse flex items-center justify-center">
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                </div>
+
+                {/* Yatay ve Dikey Işıklı Bağlantı Çizgileri */}
+                <div className="absolute w-64 h-0.5 bg-gradient-to-r from-transparent via-[#007AFF] to-transparent animate-pulse"></div>
+                <div className="absolute h-48 w-0.5 bg-gradient-to-b from-transparent via-[#FF3B30] to-transparent animate-pulse"></div>
+
+                {/* Çevrede Oluşan Mini Düğümler (Nodes) */}
+                <div className="absolute -translate-y-20 -translate-x-16 w-3 h-3 bg-[#007AFF] rounded-full shadow-[0_0_12px_#007AFF] animate-[ping_1s_ease-in-out_infinite]"></div>
+                <div className="absolute translate-x-20 translate-y-10 w-3 h-3 bg-[#FF3B30] rounded-full shadow-[0_0_12px_#FF3B30] animate-[ping_1.2s_ease-in-out_infinite]"></div>
+                <div className="absolute translate-y-20 -translate-x-10 w-3 h-3 bg-[#AF52DE] rounded-full shadow-[0_0_12px_#AF52DE] animate-[ping_0.8s_ease-in-out_infinite]"></div>
+                <div className="absolute -translate-x-24 -translate-y-6 w-3 h-3 bg-white rounded-full shadow-[0_0_12px_white] animate-[ping_1.5s_ease-in-out_infinite]"></div>
+                <div className="absolute translate-x-24 -translate-y-12 w-3 h-3 bg-[#007AFF] rounded-full shadow-[0_0_12px_#007AFF] animate-[ping_1.1s_ease-in-out_infinite]"></div>
+
+                {/* Alt Yazı Bilgisi */}
+                <div className="absolute bottom-6 text-[11px] font-mono tracking-widest text-[#AF52DE] animate-pulse">
+                  YETENEK AĞI VE LORE BAĞLARI ÖRÜLÜYOR...
                 </div>
               </div>
             )}
