@@ -40,7 +40,8 @@ export default function Home() {
         {/* Küçülen Logo */}
         <div className="font-black italic text-3xl tracking-tighter cursor-pointer flex items-center drop-shadow-md">
           <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
-          <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text pr-1">LORE</span>
+          {/* E HARFİ KESİLME ÇÖZÜMÜ: inline-block ve pr-2 eklendi */}
+          <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text inline-block pr-2">LORE</span>
         </div>
       </header>
 
@@ -66,7 +67,8 @@ export default function Home() {
           {/* Devasa Ana Logo */}
           <h1 className={`text-7xl md:text-9xl font-black italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none transition-opacity duration-75 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}>
             <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
-            <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm pr-2">LORE</span>
+            {/* E HARFİ KESİLME ÇÖZÜMÜ: inline-block ve pr-4 eklendi */}
+            <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm inline-block pr-4">LORE</span>
           </h1>
 
           <p className={`text-lg md:text-xl max-w-xl text-center mx-auto font-medium mb-4 transition-colors duration-75 tracking-tight ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
