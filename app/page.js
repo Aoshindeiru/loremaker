@@ -38,8 +38,8 @@ export default function Home() {
       <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-75 px-8 py-4 flex justify-between items-center ${isScrolled ? (isLightMode ? 'bg-white/70 backdrop-blur-2xl shadow-sm border-b border-white/40 translate-y-0' : 'bg-[#1C1C1E]/70 backdrop-blur-2xl border-b border-white/10 translate-y-0') : 'opacity-0 pointer-events-none -translate-y-full'}`}>
         <div className="font-black italic text-3xl tracking-tighter cursor-pointer flex items-center drop-shadow-md">
           <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>e</span>
-          <span className="bg-gradient-to-r from-[#FF3B30] from-[80%] to-[#AF52DE] text-transparent bg-clip-text">X</span>
-          <span className="text-[#AF52DE]">P</span>
+          <span className="bg-gradient-to-r from-[#FF3B30] from-[80%] to-[#AF52DE] text-transparent bg-clip-text">x</span>
+          <span className="text-[#AF52DE]">p</span>
           <span className="bg-gradient-to-r from-[#AF52DE] from-[10%] to-[#007AFF] text-transparent bg-clip-text">L</span>
           <span className="text-[#007AFF]">ORE</span>
         </div>
