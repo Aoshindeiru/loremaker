@@ -18,33 +18,29 @@ export default function Home() {
   const handleForge = () => {
     if (!inputData) return;
     setLoading(true);
-    // 3 saniyelik kozmik çöküş (Big Bang) bekleme süresi
+    // 3 saniyelik Hollow Purple çarpışma animasyonu
     setTimeout(() => {
       setLoading(false);
-      alert("Büyük Patlama (Big Bang) Gerçekleşti! Fandom Paneli Açılıyor...");
+      alert("Hollow Purple Çarpışması Tamamlandı! Fandom Paneli Açılıyor...");
     }, 3000);
   };
 
   return (
     <main className={`min-h-screen transition-colors duration-75 relative overflow-x-hidden font-sans ${isLightMode ? 'bg-[#F5F5F7] text-[#1D1D1F]' : 'bg-[#000000] text-white selection:bg-[#AF52DE] selection:text-white'}`}>
       
-      {/* --- SABİT ARKA PLAN (VIBRANT HOLLOW PURPLE - iOS GLOW) --- */}
+      {/* --- SABİT ARKA PLAN --- */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
         <div className={`absolute top-[-5%] left-[-5%] w-[45vw] h-[45vw] bg-[#007AFF] rounded-full filter blur-[120px] animate-[pulse_6s_ease-in-out_infinite] transition-opacity duration-75 ${isLightMode ? 'opacity-10' : 'opacity-20'}`}></div>
         <div className={`absolute bottom-[-5%] right-[-5%] w-[45vw] h-[45vw] bg-[#FF3B30] rounded-full filter blur-[120px] animate-[pulse_6s_ease-in-out_infinite_reverse] transition-opacity duration-75 ${isLightMode ? 'opacity-10' : 'opacity-20'}`}></div>
         <div className={`absolute w-[50vw] h-[50vw] bg-[#AF52DE] rounded-full filter blur-[180px] transition-opacity duration-75 ${isLightMode ? 'opacity-10' : 'opacity-[0.15]'}`}></div>
       </div>
 
-      {/* --- YUKARIDAN İNEN SABİT MENÜ (STICKY NAVBAR) --- */}
+      {/* --- STICKY NAVBAR --- */}
       <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-75 px-8 py-4 flex justify-between items-center ${isScrolled ? (isLightMode ? 'bg-white/70 backdrop-blur-2xl shadow-sm border-b border-white/40 translate-y-0' : 'bg-[#1C1C1E]/70 backdrop-blur-2xl border-b border-white/10 translate-y-0') : 'opacity-0 pointer-events-none -translate-y-full'}`}>
-        
-        {/* 1. Sol: Küçülen Logo */}
         <div className="font-black italic text-3xl tracking-tighter cursor-pointer flex items-center drop-shadow-md">
           <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
           <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm inline-block pr-4">LORE</span>
         </div>
-
-        {/* 2. Orta: Menü Linkleri */}
         <nav className={`hidden lg:flex items-center gap-8 font-semibold text-sm transition-colors duration-75 ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Özellikler</a>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Şablonlar</a>
@@ -52,22 +48,12 @@ export default function Home() {
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Kaynaklar</a>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Fiyatlandırma</a>
         </nav>
-
-        {/* 3. Sağ: Aksiyon Butonları & Topluluk İkonları */}
         <div className="hidden md:flex items-center gap-5 mr-20">
-          
-          {/* Discord İkonu */}
           <a href="#" className={`transition-colors duration-75 hover:text-[#5865F2] hover:drop-shadow-[0_0_8px_rgba(88,101,242,0.5)] ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`} title="Discord Sunucumuza Katıl">
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
           </a>
-
-          {/* Dikey Çizgi */}
           <div className={`w-px h-5 mx-1 ${isLightMode ? 'bg-gray-300' : 'bg-white/15'}`}></div>
-
-          <a href="#" className={`font-bold text-sm transition-colors duration-75 hover:text-[#AF52DE] ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>
-            Giriş Yap
-          </a>
-          
+          <a href="#" className={`font-bold text-sm transition-colors duration-75 hover:text-[#AF52DE] ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>Giriş Yap</a>
           <button className={`relative px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 flex items-center justify-center overflow-hidden group ${isLightMode ? 'bg-[#1D1D1F] text-white shadow-md' : 'bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.1)]'}`}>
             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">Kayıt Ol</span>
@@ -75,12 +61,8 @@ export default function Home() {
         </div>
       </header>
 
-      {/* --- DARK/LIGHT MODE BUTONU --- */}
-      <button 
-        onClick={() => setIsLightMode(!isLightMode)} 
-        className={`fixed top-5 right-6 z-50 w-16 h-8 rounded-full p-1 flex items-center transition-all duration-75 shadow-lg backdrop-blur-xl ${isLightMode ? 'bg-white/80 border border-gray-200 hover:shadow-xl' : 'bg-[#2C2C2E]/80 border border-white/10 hover:shadow-[0_0_20px_rgba(175,82,222,0.4)]'}`}
-        aria-label="Toggle Theme"
-      >
+      {/* --- TEMA BUTONU --- */}
+      <button onClick={() => setIsLightMode(!isLightMode)} className={`fixed top-5 right-6 z-50 w-16 h-8 rounded-full p-1 flex items-center transition-all duration-75 shadow-lg backdrop-blur-xl ${isLightMode ? 'bg-white/80 border border-gray-200 hover:shadow-xl' : 'bg-[#2C2C2E]/80 border border-white/10 hover:shadow-[0_0_20px_rgba(175,82,222,0.4)]'}`}>
         <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-75 shadow-sm ${isLightMode ? 'bg-white translate-x-0' : 'bg-gradient-to-tr from-[#AF52DE] to-[#007AFF] translate-x-8'}`}>
           {isLightMode ? (
             <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
@@ -113,14 +95,18 @@ export default function Home() {
             
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF3B30] opacity-90"></div>
             
-            {/* KARADELİK ANİMASYONU */}
+            {/* HOLLOW PURPLE ÇARPIŞMA ANİMASYONU */}
             {loading && (
-              <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none rounded-3xl bg-black/50 backdrop-blur-sm transition-all duration-500">
-                <div className="relative w-28 h-28 flex items-center justify-center">
-                  <div className="absolute w-full h-full rounded-full border-t-4 border-[#AF52DE] border-b-4 border-[#007AFF] animate-[spin_1.5s_linear_infinite] filter blur-[3px]"></div>
-                  <div className="absolute w-[140%] h-[140%] rounded-full border-r-2 border-[#FF3B30] border-l-2 border-[#AF52DE] animate-[spin_2s_linear_infinite_reverse] opacity-60"></div>
-                  <div className="absolute w-16 h-16 bg-black rounded-full shadow-[0_0_40px_20px_rgba(175,82,222,0.7)] animate-pulse"></div>
-                  <div className="absolute w-40 h-40 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#AF52DE]/30 via-transparent to-transparent animate-ping opacity-40"></div>
+              <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none rounded-3xl bg-black/70 backdrop-blur-md overflow-hidden transition-all duration-300">
+                {/* Kırmızı Orb soldan merkeze akıyor */}
+                <div className="absolute w-40 h-40 bg-[#FF3B30] rounded-full filter blur-[35px] animate-[ping_1s_ease-in-out_infinite] opacity-80 -translate-x-20"></div>
+                {/* Mavi Orb sağdan merkeze akıyor */}
+                <div className="absolute w-40 h-40 bg-[#007AFF] rounded-full filter blur-[35px] animate-[ping_1s_ease-in-out_infinite_reverse] opacity-80 translate-x-20"></div>
+                
+                {/* Merkezde Şiddetli Titreyen ve Elektrik Saçan Mor Enerji Küresi (Hollow Purple) */}
+                <div className="relative w-28 h-28 bg-[#AF52DE] rounded-full shadow-[0_0_60px_30px_rgba(175,82,222,0.9)] animate-pulse flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full border-4 border-white animate-[ping_0.4s_linear_infinite] opacity-80"></div>
+                  <div className="absolute w-12 h-12 bg-white rounded-full animate-ping opacity-90"></div>
                 </div>
               </div>
             )}
