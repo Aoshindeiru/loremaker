@@ -37,10 +37,10 @@ export default function Home() {
       {/* --- YUKARIDAN İNEN SABİT MENÜ (STICKY NAVBAR) --- */}
       <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-75 px-8 py-4 flex justify-between items-center ${isScrolled ? (isLightMode ? 'bg-white/70 backdrop-blur-2xl shadow-sm border-b border-white/40 translate-y-0' : 'bg-[#1C1C1E]/70 backdrop-blur-2xl border-b border-white/10 translate-y-0') : 'opacity-0 pointer-events-none -translate-y-full'}`}>
         
-        {/* Küçülen Logo - YENİ TASARIM (eXP Sade, LORE Gradyan) */}
+        {/* Küçülen Logo */}
         <div className="font-black italic text-3xl tracking-tighter cursor-pointer flex items-center drop-shadow-md">
-          <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>eXP</span>
-          <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text">LORE</span>
+          <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
+          <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text pr-1">LORE</span>
         </div>
       </header>
 
@@ -63,10 +63,10 @@ export default function Home() {
       <section className="relative z-10 min-h-screen flex flex-col items-center justify-center p-6">
         <div className="w-full max-w-4xl flex flex-col items-center justify-center gap-10 mt-[-5vh]">
           
-          {/* Devasa Ana Logo - YENİ TASARIM */}
+          {/* Devasa Ana Logo */}
           <h1 className={`text-7xl md:text-9xl font-black italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none transition-opacity duration-75 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}>
-            <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>eXP</span>
-            <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm">LORE</span>
+            <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
+            <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm pr-2">LORE</span>
           </h1>
 
           <p className={`text-lg md:text-xl max-w-xl text-center mx-auto font-medium mb-4 transition-colors duration-75 tracking-tight ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
@@ -132,7 +132,7 @@ export default function Home() {
             <div className="w-16 h-16 bg-[#AF52DE]/10 rounded-2xl flex items-center justify-center mb-8 text-[#AF52DE] font-black text-3xl shadow-sm">2</div>
             <h3 className={`text-2xl font-bold mb-4 tracking-tight ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>Yapay Zeka İşlesin</h3>
             <p className={`text-base font-medium leading-relaxed ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
-              eXPLore algoritmaları yazdığın taslağı analiz eder; karakterler arası bağları, güç sistemlerini ve lore detaylarını otomatik olarak genişletir.
+              expLORE algoritmaları yazdığın taslağı analiz eder; karakterler arası bağları, güç sistemlerini ve lore detaylarını otomatik olarak genişletir.
             </p>
           </div>
 
@@ -194,7 +194,7 @@ export default function Home() {
         </div>
 
         <div className={`max-w-6xl mx-auto border-t pt-8 text-center font-medium text-xs transition-colors duration-75 ${isLightMode ? 'border-gray-300 text-[#86868B]' : 'border-white/10 text-[#A1A1A6]'}`}>
-          <p>© 2026 eXPLORE. Tüm hakları saklıdır.</p>
+          <p>© 2026 expLORE. Tüm hakları saklıdır.</p>
         </div>
       </footer>
 
