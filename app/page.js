@@ -28,6 +28,17 @@ export default function Home() {
   return (
     <main className={`min-h-screen transition-colors duration-75 relative overflow-x-hidden font-sans ${isLightMode ? 'bg-[#F5F5F7] text-[#1D1D1F]' : 'bg-[#000000] text-white selection:bg-[#AF52DE] selection:text-white'}`}>
       
+      {/* 3D SAYFA ÇEVİRME EFEKTİ İÇİN ÖZEL CSS */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes flipPage {
+            0% { transform: perspective(500px) rotateY(0deg); opacity: 1; }
+            40% { opacity: 1; }
+            100% { transform: perspective(500px) rotateY(-180deg); opacity: 0; }
+          }
+        `
+      }} />
+
       {/* --- SABİT ARKA PLAN --- */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
         <div className={`absolute top-[-5%] left-[-5%] w-[45vw] h-[45vw] bg-[#007AFF] rounded-full filter blur-[120px] animate-[pulse_6s_ease-in-out_infinite] transition-opacity duration-75 ${isLightMode ? 'opacity-10' : 'opacity-20'}`}></div>
@@ -100,21 +111,36 @@ export default function Home() {
               <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none rounded-3xl bg-black/80 backdrop-blur-md overflow-hidden transition-all duration-300">
                 <div className="relative flex flex-col items-center justify-center animate-[bounce_2s_ease-in-out_infinite]">
                   
-                  {/* Etrafa Saçılan Rünler (Fantastik Semboller) */}
+                  {/* Etrafa Saçılan Rünler */}
                   <span className="absolute -top-12 -left-10 text-[#007AFF] text-2xl font-black drop-shadow-[0_0_10px_#007AFF] animate-[ping_1.2s_ease-out_infinite]">ᛗ</span>
                   <span className="absolute -top-16 text-white text-xl font-black drop-shadow-[0_0_10px_white] animate-[ping_0.8s_ease-out_infinite]">✧</span>
                   <span className="absolute -top-10 -right-12 text-[#FF3B30] text-3xl font-black drop-shadow-[0_0_10px_#FF3B30] animate-[ping_1.5s_ease-out_infinite]">ᛟ</span>
                   <span className="absolute -top-4 -right-20 text-[#AF52DE] text-2xl font-black drop-shadow-[0_0_10px_#AF52DE] animate-[ping_1.1s_ease-out_infinite]">⚝</span>
                   <span className="absolute -top-6 -left-20 text-[#007AFF] text-xl font-black drop-shadow-[0_0_10px_#007AFF] animate-[ping_0.9s_ease-out_infinite]">ᚢ</span>
 
-                  {/* Holografik Kitap İkonu */}
-                  <div className="relative">
-                    <svg className="w-28 h-28 text-[#AF52DE] filter drop-shadow-[0_0_20px_#AF52DE] animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {/* Holografik Kitap Container */}
+                  <div className="relative w-32 h-32 flex justify-center items-center">
+                    
+                    {/* Kitap Çerçevesi (SVG) */}
+                    <svg className="absolute w-full h-full text-[#AF52DE] filter drop-shadow-[0_0_20px_#AF52DE] opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
-                    {/* Hızla Çevrilen Sayfa İllüzyonu */}
-                    <div className="absolute top-1/4 left-1/2 w-0.5 h-1/2 bg-white/70 shadow-[0_0_10px_white] rounded-full animate-[spin_0.4s_linear_infinite]"></div>
-                    <div className="absolute top-1/4 left-1/2 w-0.5 h-1/2 bg-[#AF52DE]/70 shadow-[0_0_10px_#AF52DE] rounded-full animate-[spin_0.3s_linear_infinite_reverse]"></div>
+
+                    {/* GERÇEKÇİ 3D SAYFA ÇEVİRME EFEKTİ */}
+                    {/* SVG'nin sağ sayfasına denk gelen oranlar (top 25%, height 54%, width 37%) */}
+                    <div 
+                      className="absolute top-[25%] left-1/2 w-[37%] h-[54%] bg-gradient-to-r from-[#AF52DE]/80 to-[#AF52DE]/20 border-r border-t border-b border-[#AF52DE] rounded-r-lg origin-left [animation:flipPage_0.9s_linear_infinite]" 
+                      style={{ animationDelay: '0s' }}
+                    ></div>
+                    <div 
+                      className="absolute top-[25%] left-1/2 w-[37%] h-[54%] bg-gradient-to-r from-[#007AFF]/80 to-[#007AFF]/20 border-r border-t border-b border-[#007AFF] rounded-r-lg origin-left [animation:flipPage_0.9s_linear_infinite]" 
+                      style={{ animationDelay: '0.3s' }}
+                    ></div>
+                    <div 
+                      className="absolute top-[25%] left-1/2 w-[37%] h-[54%] bg-gradient-to-r from-white/80 to-white/20 border-r border-t border-b border-white rounded-r-lg origin-left [animation:flipPage_0.9s_linear_infinite]" 
+                      style={{ animationDelay: '0.6s' }}
+                    ></div>
+
                   </div>
                   
                   {/* Kitabın Altındaki Hologram Yansıması */}
