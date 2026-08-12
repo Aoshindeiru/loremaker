@@ -37,11 +37,32 @@ export default function Home() {
       {/* --- YUKARIDAN İNEN SABİT MENÜ (STICKY NAVBAR) --- */}
       <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-75 px-8 py-4 flex justify-between items-center ${isScrolled ? (isLightMode ? 'bg-white/70 backdrop-blur-2xl shadow-sm border-b border-white/40 translate-y-0' : 'bg-[#1C1C1E]/70 backdrop-blur-2xl border-b border-white/10 translate-y-0') : 'opacity-0 pointer-events-none -translate-y-full'}`}>
         
-        {/* Küçülen Logo */}
+        {/* 1. Sol: Küçülen Logo (E Harfi Hatası Çözülü) */}
         <div className="font-black italic text-3xl tracking-tighter cursor-pointer flex items-center drop-shadow-md">
           <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
-          {/* E HARFİ KESİLME ÇÖZÜMÜ: inline-block ve pr-2 eklendi */}
-          <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text inline-block pr-2">LORE</span>
+          <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm inline-block pr-4">LORE</span>
+        </div>
+
+        {/* 2. Orta: Menü Linkleri */}
+        <nav className={`hidden md:flex items-center gap-8 font-semibold text-sm transition-colors duration-75 ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
+          <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Özellikler</a>
+          <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Keşfet</a>
+          <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Fiyatlandırma</a>
+          <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>API</a>
+        </nav>
+
+        {/* 3. Sağ: Aksiyon Butonları (Sağdan 80px (mr-20) boşluk bırakıldı ki tema butonuna çarpmasın) */}
+        <div className="hidden md:flex items-center gap-6 mr-20">
+          <a href="#" className={`font-bold text-sm transition-colors duration-75 hover:text-[#AF52DE] ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>
+            Giriş Yap
+          </a>
+          
+          <button className={`relative px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 flex items-center justify-center overflow-hidden group ${isLightMode ? 'bg-[#1D1D1F] text-white shadow-md' : 'bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.1)]'}`}>
+            {/* Hover anında parlayan gradyan arka plan */}
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            {/* Metin */}
+            <span className="relative z-10 group-hover:text-white transition-colors duration-300">Kayıt Ol</span>
+          </button>
         </div>
       </header>
 
@@ -67,7 +88,6 @@ export default function Home() {
           {/* Devasa Ana Logo */}
           <h1 className={`text-7xl md:text-9xl font-black italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none transition-opacity duration-75 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}>
             <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
-            {/* E HARFİ KESİLME ÇÖZÜMÜ: inline-block ve pr-4 eklendi */}
             <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm inline-block pr-4">LORE</span>
           </h1>
 
