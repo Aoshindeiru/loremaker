@@ -66,8 +66,8 @@ export default function Home() {
           
           <h1 className={`text-7xl md:text-9xl font-black italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none transition-opacity duration-75 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}>
             <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>e</span>
-            <span className="bg-gradient-to-r from-[#FF3B30] from-[80%] to-[#AF52DE] text-transparent bg-clip-text drop-shadow-sm">X</span>
-            <span className="text-[#AF52DE] drop-shadow-sm">P</span>
+            <span className="bg-gradient-to-r from-[#FF3B30] from-[80%] to-[#AF52DE] text-transparent bg-clip-text drop-shadow-sm">x</span>
+            <span className="text-[#AF52DE] drop-shadow-sm">p</span>
             <span className="bg-gradient-to-r from-[#AF52DE] from-[10%] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm">L</span>
             <span className="text-[#007AFF] drop-shadow-sm">ORE</span>
           </h1>
