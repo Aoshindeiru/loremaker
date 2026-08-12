@@ -32,20 +32,20 @@ export default function Home() {
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes clashRed {
-            0% { width: 50%; }
-            20% { width: 75%; filter: brightness(1.2); }
-            40% { width: 25%; }
-            60% { width: 65%; filter: brightness(1.5); }
-            80% { width: 50%; }
-            100% { width: 50%; }
+            0% { width: 60%; }
+            20% { width: 85%; filter: brightness(1.2); }
+            40% { width: 35%; }
+            60% { width: 75%; filter: brightness(1.5); }
+            80% { width: 60%; }
+            100% { width: 60%; }
           }
           @keyframes clashBlue {
-            0% { width: 50%; }
-            20% { width: 25%; }
-            40% { width: 75%; filter: brightness(1.2); }
-            60% { width: 35%; filter: brightness(1.5); }
-            80% { width: 50%; }
-            100% { width: 50%; }
+            0% { width: 60%; }
+            20% { width: 35%; }
+            40% { width: 85%; filter: brightness(1.2); }
+            60% { width: 45%; filter: brightness(1.5); }
+            80% { width: 60%; }
+            100% { width: 60%; }
           }
           @keyframes purpleExplode {
             0%, 80% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
@@ -66,12 +66,6 @@ export default function Home() {
             0%, 90% { opacity: 0; }
             94% { opacity: 1; }
             100% { opacity: 0; }
-          }
-          @keyframes clashSpark {
-            0%, 80% { opacity: 0.8; transform: translate(-50%, -50%) scaleX(1); }
-            10%, 30%, 50%, 70% { transform: translate(-50%, -50%) scaleX(3) skewX(15deg); }
-            20%, 40%, 60% { transform: translate(-50%, -50%) scaleX(3) skewX(-15deg); }
-            82%, 100% { opacity: 0; }
           }
         `
       }} />
@@ -147,26 +141,18 @@ export default function Home() {
             {loading && (
               <div className="absolute inset-0 z-30 bg-black overflow-hidden rounded-3xl">
                 
-                {/* Sol Taraf: Kırmızı İtme Gücü */}
-                <div className="absolute left-0 top-0 h-full bg-[#FF3B30] shadow-[20px_0_40px_#FF3B30] [animation:clashRed_5s_ease-in-out_forwards]"></div>
+                {/* Sol Taraf: Kırmızı İtme Gücü (Yumuşak Geçişli ve Bulanık) */}
+                <div className="absolute left-0 top-0 h-full mix-blend-screen blur-xl opacity-90 bg-gradient-to-r from-[#FF3B30] via-[#FF3B30]/70 to-transparent [animation:clashRed_5s_ease-in-out_forwards]"></div>
                 
-                {/* Sağ Taraf: Mavi Çekme Gücü */}
-                <div className="absolute right-0 top-0 h-full bg-[#007AFF] shadow-[-20px_0_40px_#007AFF] [animation:clashBlue_5s_ease-in-out_forwards]"></div>
-                
-                {/* Merkezdeki Çarpışma Kıvılcımları / Elektrik */}
-                <div className="absolute left-1/2 top-1/2 w-8 h-full bg-white opacity-80 blur-[4px] [animation:clashSpark_5s_ease-in-out_forwards]"></div>
+                {/* Sağ Taraf: Mavi Çekme Gücü (Yumuşak Geçişli ve Bulanık) */}
+                <div className="absolute right-0 top-0 h-full mix-blend-screen blur-xl opacity-90 bg-gradient-to-l from-[#007AFF] via-[#007AFF]/70 to-transparent [animation:clashBlue_5s_ease-in-out_forwards]"></div>
 
                 {/* Mor Enerji Patlaması (Hollow Purple Overload) */}
-                <div className="absolute top-1/2 left-1/2 w-[300%] aspect-square rounded-full bg-[#AF52DE] mix-blend-screen [animation:purpleExplode_5s_ease-in-out_forwards]"></div>
+                <div className="absolute top-1/2 left-1/2 w-[300%] aspect-square rounded-full bg-[#AF52DE] mix-blend-screen blur-2xl [animation:purpleExplode_5s_ease-in-out_forwards]"></div>
 
                 {/* En Sondaki Beyaz Flaş Patlaması */}
                 <div className="absolute inset-0 bg-white [animation:whiteFlash_5s_ease-in-out_forwards] pointer-events-none"></div>
 
-                {/* Ortadaki Neon Uyarı Yazısı */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center text-sm md:text-lg font-black tracking-[0.4em] text-white z-40 drop-shadow-[0_0_10px_rgba(255,255,255,1)] animate-pulse">
-                  AŞIRI YÜKLENME<br/>
-                  <span className="text-[10px] md:text-xs text-[#AF52DE] tracking-widest mt-2 block">EVRENSEL ÇARPIŞMA GERÇEKLEŞİYOR</span>
-                </div>
               </div>
             )}
 
