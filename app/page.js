@@ -18,27 +18,16 @@ export default function Home() {
   const handleForge = () => {
     if (!inputData) return;
     setLoading(true);
-    // 3 saniyelik Holografik Antik Büyü Kitabı (Grimoire) okuma süresi
+    // 3 saniyelik Kuantum Hızlandırıcı yükleme süresi
     setTimeout(() => {
       setLoading(false);
-      alert("Büyü Tamamlandı! Fandom Paneli Açılıyor...");
+      alert("Enerji Sıkışması Tamamlandı! Fandom Paneli Açılıyor...");
     }, 3000);
   };
 
   return (
     <main className={`min-h-screen transition-colors duration-75 relative overflow-x-hidden font-sans ${isLightMode ? 'bg-[#F5F5F7] text-[#1D1D1F]' : 'bg-[#000000] text-white selection:bg-[#AF52DE] selection:text-white'}`}>
       
-      {/* 3D SAYFA ÇEVİRME EFEKTİ İÇİN ÖZEL CSS */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          @keyframes flipPage {
-            0% { transform: perspective(500px) rotateY(0deg); opacity: 1; }
-            40% { opacity: 1; }
-            100% { transform: perspective(500px) rotateY(-180deg); opacity: 0; }
-          }
-        `
-      }} />
-
       {/* --- SABİT ARKA PLAN --- */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
         <div className={`absolute top-[-5%] left-[-5%] w-[45vw] h-[45vw] bg-[#007AFF] rounded-full filter blur-[120px] animate-[pulse_6s_ease-in-out_infinite] transition-opacity duration-75 ${isLightMode ? 'opacity-10' : 'opacity-20'}`}></div>
@@ -106,50 +95,27 @@ export default function Home() {
             
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF3B30] opacity-90"></div>
             
-            {/* HOLOGRAFİK ANTİK BÜYÜ KİTABI (GRIMOIRE) ANİMASYONU */}
+            {/* KUANTUM PARÇACIK HIZLANDIRICI ANİMASYONU */}
             {loading && (
               <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none rounded-3xl bg-black/80 backdrop-blur-md overflow-hidden transition-all duration-300">
-                <div className="relative flex flex-col items-center justify-center animate-[bounce_2s_ease-in-out_infinite]">
+                <div className="relative w-48 h-48 flex items-center justify-center">
                   
-                  {/* Etrafa Saçılan Rünler */}
-                  <span className="absolute -top-12 -left-10 text-[#007AFF] text-2xl font-black drop-shadow-[0_0_10px_#007AFF] animate-[ping_1.2s_ease-out_infinite]">ᛗ</span>
-                  <span className="absolute -top-16 text-white text-xl font-black drop-shadow-[0_0_10px_white] animate-[ping_0.8s_ease-out_infinite]">✧</span>
-                  <span className="absolute -top-10 -right-12 text-[#FF3B30] text-3xl font-black drop-shadow-[0_0_10px_#FF3B30] animate-[ping_1.5s_ease-out_infinite]">ᛟ</span>
-                  <span className="absolute -top-4 -right-20 text-[#AF52DE] text-2xl font-black drop-shadow-[0_0_10px_#AF52DE] animate-[ping_1.1s_ease-out_infinite]">⚝</span>
-                  <span className="absolute -top-6 -left-20 text-[#007AFF] text-xl font-black drop-shadow-[0_0_10px_#007AFF] animate-[ping_0.9s_ease-out_infinite]">ᚢ</span>
+                  {/* Mavi Halka (Ters Yönde Döner) */}
+                  <div className="absolute w-[120%] h-[120%] rounded-full border-t-4 border-b-4 border-transparent border-l-[#007AFF] border-r-[#007AFF] shadow-[0_0_30px_rgba(0,122,255,0.6)] animate-[spin_1s_linear_infinite_reverse]"></div>
+                  
+                  {/* Kırmızı Halka (Düz Yönde Döner) */}
+                  <div className="absolute w-full h-full rounded-full border-l-4 border-r-4 border-transparent border-t-[#FF3B30] border-b-[#FF3B30] shadow-[0_0_30px_rgba(255,59,48,0.6)] animate-[spin_0.8s_linear_infinite]"></div>
 
-                  {/* Holografik Kitap Container */}
-                  <div className="relative w-32 h-32 flex justify-center items-center">
-                    
-                    {/* Kitap Çerçevesi (SVG) */}
-                    <svg className="absolute w-full h-full text-[#AF52DE] filter drop-shadow-[0_0_20px_#AF52DE] opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-
-                    {/* GERÇEKÇİ 3D SAYFA ÇEVİRME EFEKTİ */}
-                    {/* SVG'nin sağ sayfasına denk gelen oranlar (top 25%, height 54%, width 37%) */}
-                    <div 
-                      className="absolute top-[25%] left-1/2 w-[37%] h-[54%] bg-gradient-to-r from-[#AF52DE]/80 to-[#AF52DE]/20 border-r border-t border-b border-[#AF52DE] rounded-r-lg origin-left [animation:flipPage_0.9s_linear_infinite]" 
-                      style={{ animationDelay: '0s' }}
-                    ></div>
-                    <div 
-                      className="absolute top-[25%] left-1/2 w-[37%] h-[54%] bg-gradient-to-r from-[#007AFF]/80 to-[#007AFF]/20 border-r border-t border-b border-[#007AFF] rounded-r-lg origin-left [animation:flipPage_0.9s_linear_infinite]" 
-                      style={{ animationDelay: '0.3s' }}
-                    ></div>
-                    <div 
-                      className="absolute top-[25%] left-1/2 w-[37%] h-[54%] bg-gradient-to-r from-white/80 to-white/20 border-r border-t border-b border-white rounded-r-lg origin-left [animation:flipPage_0.9s_linear_infinite]" 
-                      style={{ animationDelay: '0.6s' }}
-                    ></div>
-
+                  {/* Mor Plazma Enerjisi (Merkezde Sıkışan Çekirdek) */}
+                  <div className="absolute w-16 h-16 bg-[#AF52DE] rounded-full shadow-[0_0_50px_20px_rgba(175,82,222,0.9)] animate-[pulse_0.5s_ease-in-out_infinite] flex items-center justify-center">
+                    <div className="w-8 h-8 bg-white rounded-full animate-ping opacity-90"></div>
                   </div>
                   
-                  {/* Kitabın Altındaki Hologram Yansıması */}
-                  <div className="w-24 h-3 mt-4 bg-[#AF52DE] rounded-[100%] filter blur-[10px] opacity-60"></div>
                 </div>
 
                 {/* Alt Yazı Bilgisi */}
                 <div className="absolute bottom-6 text-[11px] font-mono tracking-widest text-[#AF52DE] animate-pulse">
-                  ANTİK RÜNLER OKUNUYOR... EVREN YARATILIYOR...
+                  KUANTUM HIZLANDIRICI AKTİF... EVRENSEL ENERJİ SIKIŞTIRILIYOR...
                 </div>
               </div>
             )}
