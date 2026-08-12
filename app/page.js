@@ -18,50 +18,39 @@ export default function Home() {
   const handleForge = () => {
     if (!inputData) return;
     setLoading(true);
-    // 5 saniyelik Epik Çarpışma ve Saf Mor Patlama süresi
+    // 5 saniyelik Saf Gradyan Savaşı ve Mor Patlama süresi
     setTimeout(() => {
       setLoading(false);
-      alert("Aşırı Yüklenme Tamamlandı! Fandom Paneli Açılıyor...");
+      alert("Evrensel Çarpışma Tamamlandı! Fandom Paneli Açılıyor...");
     }, 5000);
   };
 
   return (
     <main className={`min-h-screen transition-colors duration-75 relative overflow-x-hidden font-sans ${isLightMode ? 'bg-[#F5F5F7] text-[#1D1D1F]' : 'bg-[#000000] text-white selection:bg-[#AF52DE] selection:text-white'}`}>
       
-      {/* 5 SANİYELİK YUMUŞAK GEÇİŞLİ EPİK ÇARPIŞMA İÇİN ÖZEL CSS */}
+      {/* 5 SANİYELİK SAF GRADYAN ÇARPIŞMASI İÇİN ÖZEL CSS */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes clashRed {
-            0% { width: 55%; opacity: 0.8; }
-            20% { width: 75%; opacity: 0.9; filter: brightness(1.2); }
-            40% { width: 35%; opacity: 0.7; }
-            60% { width: 65%; opacity: 0.9; filter: brightness(1.4); }
-            75% { width: 50%; opacity: 1; }
-            80%, 100% { width: 50%; opacity: 0; }
+          @keyframes clashWar {
+            0% { background-position: 50% 50%; }
+            15% { background-position: 0% 50%; filter: brightness(1.2); } /* Kırmızı öne geçiyor */
+            35% { background-position: 100% 50%; filter: brightness(1.2); } /* Mavi öne geçiyor */
+            55% { background-position: 10% 50%; filter: brightness(1.3); } /* Kırmızı tekrar bastırıyor */
+            75% { background-position: 50% 50%; filter: brightness(1.5); } /* Ortada eşitleniyorlar */
+            100% { background-position: 50% 50%; filter: brightness(1); }
           }
-          @keyframes clashBlue {
-            0% { width: 55%; opacity: 0.8; }
-            20% { width: 35%; opacity: 0.7; }
-            40% { width: 75%; opacity: 0.9; filter: brightness(1.2); }
-            60% { width: 45%; opacity: 0.9; filter: brightness(1.4); }
-            75% { width: 50%; opacity: 1; }
-            80%, 100% { width: 50%; opacity: 0; }
-          }
-          @keyframes purpleCenterMix {
-            0% { left: 50%; width: 30%; opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-            20% { left: 65%; width: 40%; opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); filter: brightness(1.2); }
-            40% { left: 35%; width: 40%; opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); filter: brightness(1.2); }
-            60% { left: 55%; width: 50%; opacity: 0.9; transform: translate(-50%, -50%) scale(1.2); filter: brightness(1.4); }
-            75% { left: 50%; width: 20%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); filter: brightness(2); }
-            85% { left: 50%; width: 200%; opacity: 1; transform: translate(-50%, -50%) scale(1.5); filter: brightness(1.2); }
-            100% { left: 50%; width: 200%; opacity: 1; transform: translate(-50%, -50%) scale(1.5); filter: brightness(1); }
+          @keyframes purpleOverload {
+            0%, 75% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            76% { transform: translate(-50%, -50%) scale(0.05); opacity: 1; filter: brightness(2); }
+            85% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; filter: brightness(1.2); }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; filter: brightness(1); }
           }
           @keyframes containerShake {
             0%, 70% { transform: scale(0.98); }
-            72%, 76% { transform: scale(0.98) translateX(-10px); }
-            74%, 78% { transform: scale(0.98) translateX(10px); }
-            80% { transform: scale(0.98) translateX(0); }
-            85% { transform: scale(1.05); }
+            71%, 73%, 75% { transform: scale(0.98) translateX(-15px); }
+            72%, 74%, 76% { transform: scale(0.98) translateX(15px); }
+            77% { transform: scale(0.98) translateX(0); }
+            80% { transform: scale(1.02); }
             100% { transform: scale(1); }
           }
         `
@@ -134,18 +123,28 @@ export default function Home() {
             
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF3B30] opacity-90"></div>
             
-            {/* EPİK ÇARPIŞMA VE SAF MOR PATLAMA ANİMASYONU */}
+            {/* SAF GRADYAN SAVAŞI (Yuvarlak YOK, Sadece Renk Duvarı) */}
             {loading && (
-              <div className="absolute inset-0 z-30 bg-black overflow-hidden rounded-3xl">
+              <div className="absolute inset-0 z-30 bg-black overflow-hidden rounded-3xl pointer-events-none">
                 
-                {/* Sol Taraf: Kırmızı İtme Gücü (Yumuşak Geçişli) */}
-                <div className="absolute left-0 top-0 h-full bg-gradient-to-r from-[#FF3B30] to-transparent blur-md [animation:clashRed_5s_ease-in-out_forwards]"></div>
-                
-                {/* Sağ Taraf: Mavi Çekme Gücü (Yumuşak Geçişli) */}
-                <div className="absolute right-0 top-0 h-full bg-gradient-to-l from-[#007AFF] to-transparent blur-md [animation:clashBlue_5s_ease-in-out_forwards]"></div>
+                {/* Metin Kutusunun Tamamını Kaplayan Animasyonlu Gradyan (Bir sağa bir sola kayar) */}
+                <div 
+                  className="absolute inset-0 opacity-90"
+                  style={{
+                    background: 'linear-gradient(90deg, #FF3B30 0%, #FF3B30 25%, #AF52DE 50%, #007AFF 75%, #007AFF 100%)',
+                    backgroundSize: '300% 100%',
+                    animation: 'clashWar 5s ease-in-out forwards'
+                  }}
+                ></div>
 
-                {/* Sentezlenen Mor Merkez (İtişmelere Göre Sağa Sola Kayar, En Son Patlar) */}
-                <div className="absolute top-1/2 aspect-square rounded-full bg-[#AF52DE] blur-2xl [animation:purpleCenterMix_5s_ease-in-out_forwards]"></div>
+                {/* Sonda Eşitlendiklerinde Merkezden Patlayan Saf Mor Enerji */}
+                <div 
+                  className="absolute top-1/2 left-1/2 w-[150%] aspect-square rounded-full bg-[#AF52DE]"
+                  style={{
+                    transform: 'translate(-50%, -50%) scale(0)',
+                    animation: 'purpleOverload 5s ease-in-out forwards'
+                  }}
+                ></div>
 
               </div>
             )}
