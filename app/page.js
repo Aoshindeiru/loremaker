@@ -25,7 +25,7 @@ export default function Home() {
   };
 
   return (
-    <main className={`min-h-screen transition-colors duration-75 relative overflow-x-hidden font-sans ${isLightMode ? 'bg-[#F5F5F7] text-[#1D1D1F]' : 'bg-[#000000] text-white selection:bg-[#8338EC] selection:text-white'}`}>
+    <main className={`min-h-screen transition-colors duration-75 relative overflow-x-hidden font-sans ${isLightMode ? 'bg-[#F5F5F7] text-[#1D1D1F]' : 'bg-[#000000] text-white selection:bg-[#AF52DE] selection:text-white'}`}>
       
       {/* --- SABİT ARKA PLAN (VIBRANT HOLLOW PURPLE - iOS GLOW) --- */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
@@ -34,18 +34,17 @@ export default function Home() {
         <div className={`absolute w-[50vw] h-[50vw] bg-[#AF52DE] rounded-full filter blur-[180px] transition-opacity duration-75 ${isLightMode ? 'opacity-10' : 'opacity-[0.15]'}`}></div>
       </div>
 
-      {/* --- YUKARIDAN İNEN SABİT MENÜ (STICKY NAVBAR - GLASSMORPHISM) --- */}
+      {/* --- YUKARIDAN İNEN SABİT MENÜ (STICKY NAVBAR) --- */}
       <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-75 px-8 py-4 flex justify-between items-center ${isScrolled ? (isLightMode ? 'bg-white/70 backdrop-blur-2xl shadow-sm border-b border-white/40 translate-y-0' : 'bg-[#1C1C1E]/70 backdrop-blur-2xl border-b border-white/10 translate-y-0') : 'opacity-0 pointer-events-none -translate-y-full'}`}>
+        
+        {/* Küçülen Logo - YENİ TASARIM (eXP Sade, LORE Gradyan) */}
         <div className="font-black italic text-3xl tracking-tighter cursor-pointer flex items-center drop-shadow-md">
-          <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>e</span>
-          <span className="bg-gradient-to-r from-[#FF3B30] from-[80%] to-[#AF52DE] text-transparent bg-clip-text">x</span>
-          <span className="text-[#AF52DE]">p</span>
-          <span className="bg-gradient-to-r from-[#AF52DE] from-[10%] to-[#007AFF] text-transparent bg-clip-text">L</span>
-          <span className="text-[#007AFF]">ORE</span>
+          <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>eXP</span>
+          <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text">LORE</span>
         </div>
       </header>
 
-      {/* --- DARK/LIGHT MODE BUTONU (iOS CAPSULE STYLE) --- */}
+      {/* --- DARK/LIGHT MODE BUTONU --- */}
       <button 
         onClick={() => setIsLightMode(!isLightMode)} 
         className={`fixed top-5 right-6 z-50 w-16 h-8 rounded-full p-1 flex items-center transition-all duration-75 shadow-lg backdrop-blur-xl ${isLightMode ? 'bg-white/80 border border-gray-200 hover:shadow-xl' : 'bg-[#2C2C2E]/80 border border-white/10 hover:shadow-[0_0_20px_rgba(175,82,222,0.4)]'}`}
@@ -64,19 +63,16 @@ export default function Home() {
       <section className="relative z-10 min-h-screen flex flex-col items-center justify-center p-6">
         <div className="w-full max-w-4xl flex flex-col items-center justify-center gap-10 mt-[-5vh]">
           
+          {/* Devasa Ana Logo - YENİ TASARIM */}
           <h1 className={`text-7xl md:text-9xl font-black italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none transition-opacity duration-75 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}>
-            <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>e</span>
-            <span className="bg-gradient-to-r from-[#FF3B30] from-[80%] to-[#AF52DE] text-transparent bg-clip-text drop-shadow-sm">x</span>
-            <span className="text-[#AF52DE] drop-shadow-sm">p</span>
-            <span className="bg-gradient-to-r from-[#AF52DE] from-[10%] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm">L</span>
-            <span className="text-[#007AFF] drop-shadow-sm">ORE</span>
+            <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>eXP</span>
+            <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm">LORE</span>
           </h1>
 
           <p className={`text-lg md:text-xl max-w-xl text-center mx-auto font-medium mb-4 transition-colors duration-75 tracking-tight ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
             Aklındaki karmaşık fikirleri, saniyeler içinde kusursuz bir Fandom veritabanına dönüştür.
           </p>
 
-          {/* Metin Kutusu - iOS Glassmorphism Arayüzü */}
           <div className={`w-full max-w-2xl rounded-3xl relative overflow-hidden transition-all duration-75 border backdrop-blur-2xl ${isLightMode ? 'bg-white/60 border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.15)] focus-within:border-white' : 'bg-[#1C1C1E]/60 border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.4)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.25)] focus-within:border-white/20'}`}>
             
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF3B30] opacity-90"></div>
@@ -112,7 +108,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 2. BÖLÜM: ÖZELLİKLER (iOS KART TASARIMI) --- */}
+      {/* --- 2. BÖLÜM: ÖZELLİKLER --- */}
       <section className="relative z-10 w-full max-w-6xl mx-auto py-32 px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">Sistem Nasıl Çalışır?</h2>
