@@ -18,7 +18,7 @@ export default function Home() {
   const handleForge = () => {
     if (!inputData) return;
     setLoading(true);
-    // 5 saniyelik Epik Çarpışma ve Mor Patlama süresi
+    // 5 saniyelik Epik Çarpışma ve Saf Mor Patlama süresi
     setTimeout(() => {
       setLoading(false);
       alert("Aşırı Yüklenme Tamamlandı! Fandom Paneli Açılıyor...");
@@ -28,44 +28,41 @@ export default function Home() {
   return (
     <main className={`min-h-screen transition-colors duration-75 relative overflow-x-hidden font-sans ${isLightMode ? 'bg-[#F5F5F7] text-[#1D1D1F]' : 'bg-[#000000] text-white selection:bg-[#AF52DE] selection:text-white'}`}>
       
-      {/* 5 SANİYELİK EPİK ÇARPIŞMA (HOLLOW PURPLE) EFEKTİ İÇİN ÖZEL CSS */}
+      {/* 5 SANİYELİK YUMUŞAK GEÇİŞLİ EPİK ÇARPIŞMA İÇİN ÖZEL CSS */}
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes clashRed {
-            0% { width: 60%; }
-            20% { width: 85%; filter: brightness(1.2); }
-            40% { width: 35%; }
-            60% { width: 75%; filter: brightness(1.5); }
-            80% { width: 60%; }
-            100% { width: 60%; }
+            0% { width: 55%; opacity: 0.8; }
+            20% { width: 75%; opacity: 0.9; filter: brightness(1.2); }
+            40% { width: 35%; opacity: 0.7; }
+            60% { width: 65%; opacity: 0.9; filter: brightness(1.4); }
+            75% { width: 50%; opacity: 1; }
+            80%, 100% { width: 50%; opacity: 0; }
           }
           @keyframes clashBlue {
-            0% { width: 60%; }
-            20% { width: 35%; }
-            40% { width: 85%; filter: brightness(1.2); }
-            60% { width: 45%; filter: brightness(1.5); }
-            80% { width: 60%; }
-            100% { width: 60%; }
+            0% { width: 55%; opacity: 0.8; }
+            20% { width: 35%; opacity: 0.7; }
+            40% { width: 75%; opacity: 0.9; filter: brightness(1.2); }
+            60% { width: 45%; opacity: 0.9; filter: brightness(1.4); }
+            75% { width: 50%; opacity: 1; }
+            80%, 100% { width: 50%; opacity: 0; }
           }
-          @keyframes purpleExplode {
-            0%, 80% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-            82% { transform: translate(-50%, -50%) scale(0.1); filter: brightness(2); }
-            90% { transform: translate(-50%, -50%) scale(1); filter: brightness(1); }
-            95% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+          @keyframes purpleCenterMix {
+            0% { left: 50%; width: 30%; opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            20% { left: 65%; width: 40%; opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); filter: brightness(1.2); }
+            40% { left: 35%; width: 40%; opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); filter: brightness(1.2); }
+            60% { left: 55%; width: 50%; opacity: 0.9; transform: translate(-50%, -50%) scale(1.2); filter: brightness(1.4); }
+            75% { left: 50%; width: 20%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); filter: brightness(2); }
+            85% { left: 50%; width: 200%; opacity: 1; transform: translate(-50%, -50%) scale(1.5); filter: brightness(1.2); }
+            100% { left: 50%; width: 200%; opacity: 1; transform: translate(-50%, -50%) scale(1.5); filter: brightness(1); }
           }
           @keyframes containerShake {
-            0% { transform: scale(0.98); }
-            10%, 30%, 50%, 70% { transform: scale(0.98) translateX(-8px); }
-            20%, 40%, 60% { transform: scale(0.98) translateX(8px); }
+            0%, 70% { transform: scale(0.98); }
+            72%, 76% { transform: scale(0.98) translateX(-10px); }
+            74%, 78% { transform: scale(0.98) translateX(10px); }
             80% { transform: scale(0.98) translateX(0); }
-            82% { transform: scale(1.05); }
+            85% { transform: scale(1.05); }
             100% { transform: scale(1); }
-          }
-          @keyframes whiteFlash {
-            0%, 90% { opacity: 0; }
-            94% { opacity: 1; }
-            100% { opacity: 0; }
           }
         `
       }} />
@@ -137,21 +134,18 @@ export default function Home() {
             
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF3B30] opacity-90"></div>
             
-            {/* EPİK ÇARPIŞMA VE AŞIRI YÜKLENME ANİMASYONU */}
+            {/* EPİK ÇARPIŞMA VE SAF MOR PATLAMA ANİMASYONU */}
             {loading && (
               <div className="absolute inset-0 z-30 bg-black overflow-hidden rounded-3xl">
                 
-                {/* Sol Taraf: Kırmızı İtme Gücü (Yumuşak Geçişli ve Bulanık) */}
-                <div className="absolute left-0 top-0 h-full mix-blend-screen blur-xl opacity-90 bg-gradient-to-r from-[#FF3B30] via-[#FF3B30]/70 to-transparent [animation:clashRed_5s_ease-in-out_forwards]"></div>
+                {/* Sol Taraf: Kırmızı İtme Gücü (Yumuşak Geçişli) */}
+                <div className="absolute left-0 top-0 h-full bg-gradient-to-r from-[#FF3B30] to-transparent blur-md [animation:clashRed_5s_ease-in-out_forwards]"></div>
                 
-                {/* Sağ Taraf: Mavi Çekme Gücü (Yumuşak Geçişli ve Bulanık) */}
-                <div className="absolute right-0 top-0 h-full mix-blend-screen blur-xl opacity-90 bg-gradient-to-l from-[#007AFF] via-[#007AFF]/70 to-transparent [animation:clashBlue_5s_ease-in-out_forwards]"></div>
+                {/* Sağ Taraf: Mavi Çekme Gücü (Yumuşak Geçişli) */}
+                <div className="absolute right-0 top-0 h-full bg-gradient-to-l from-[#007AFF] to-transparent blur-md [animation:clashBlue_5s_ease-in-out_forwards]"></div>
 
-                {/* Mor Enerji Patlaması (Hollow Purple Overload) */}
-                <div className="absolute top-1/2 left-1/2 w-[300%] aspect-square rounded-full bg-[#AF52DE] mix-blend-screen blur-2xl [animation:purpleExplode_5s_ease-in-out_forwards]"></div>
-
-                {/* En Sondaki Beyaz Flaş Patlaması */}
-                <div className="absolute inset-0 bg-white [animation:whiteFlash_5s_ease-in-out_forwards] pointer-events-none"></div>
+                {/* Sentezlenen Mor Merkez (İtişmelere Göre Sağa Sola Kayar, En Son Patlar) */}
+                <div className="absolute top-1/2 aspect-square rounded-full bg-[#AF52DE] blur-2xl [animation:purpleCenterMix_5s_ease-in-out_forwards]"></div>
 
               </div>
             )}
