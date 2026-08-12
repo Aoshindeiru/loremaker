@@ -18,10 +18,10 @@ export default function Home() {
   const handleForge = () => {
     if (!inputData) return;
     setLoading(true);
-    // 3 saniyelik Yıldız Takımyıldızı çizim süresi
+    // 3 saniyelik Hollow Purple çarpışma animasyonu
     setTimeout(() => {
       setLoading(false);
-      alert("Takımyıldızı Çizildi! Fandom Paneli Açılıyor...");
+      alert("Hollow Purple Çarpışması Tamamlandı! Fandom Paneli Açılıyor...");
     }, 3000);
   };
 
@@ -95,31 +95,18 @@ export default function Home() {
             
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF3B30] opacity-90"></div>
             
-            {/* YETENEK AĞI / TAKIMYILDIZI ÖRÜCÜSÜ ANİMASYONU */}
+            {/* HOLLOW PURPLE ÇARPIŞMA ANİMASYONU */}
             {loading && (
-              <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none rounded-3xl bg-black/80 backdrop-blur-md overflow-hidden transition-all duration-300">
-                <div className="relative w-48 h-48 flex items-center justify-center">
-                  <svg className="w-full h-full animate-[spin_10s_linear_infinite] opacity-90" viewBox="0 0 100 100" fill="none">
-                    <path d="M20 50 L50 20 L80 50 L65 80 L35 80 Z" stroke="url(#gradient)" strokeWidth="1.5" strokeDasharray="200" />
-                    <path d="M50 20 L50 50 L35 80" stroke="#007AFF" strokeWidth="1" opacity="0.6" />
-                    <path d="M80 50 L50 50 L65 80" stroke="#FF3B30" strokeWidth="1" opacity="0.6" />
-                    <defs>
-                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#FF3B30" />
-                        <stop offset="50%" stopColor="#AF52DE" />
-                        <stop offset="100%" stopColor="#007AFF" />
-                      </linearGradient>
-                    </defs>
-                    <circle cx="20" cy="50" r="3" fill="#ffffff" className="animate-ping" />
-                    <circle cx="50" cy="20" r="4" fill="#AF52DE" className="animate-pulse" />
-                    <circle cx="80" cy="50" r="3" fill="#ffffff" className="animate-ping" />
-                    <circle cx="65" cy="80" r="3.5" fill="#007AFF" className="animate-pulse" />
-                    <circle cx="35" cy="80" r="3" fill="#FF3B30" className="animate-ping" />
-                    <circle cx="50" cy="50" r="5" fill="#ffffff" />
-                  </svg>
-                </div>
-                <div className="absolute bottom-6 text-[11px] font-mono tracking-widest text-[#AF52DE] animate-pulse">
-                  YILDIZ TAKIMYILDIZI VE EVREN HARİTASI ÇİZİLİYOR...
+              <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none rounded-3xl bg-black/70 backdrop-blur-md overflow-hidden transition-all duration-300">
+                {/* Kırmızı Orb soldan merkeze akıyor */}
+                <div className="absolute w-40 h-40 bg-[#FF3B30] rounded-full filter blur-[35px] animate-[ping_1s_ease-in-out_infinite] opacity-80 -translate-x-20"></div>
+                {/* Mavi Orb sağdan merkeze akıyor */}
+                <div className="absolute w-40 h-40 bg-[#007AFF] rounded-full filter blur-[35px] animate-[ping_1s_ease-in-out_infinite_reverse] opacity-80 translate-x-20"></div>
+                
+                {/* Merkezde Şiddetli Titreyen ve Elektrik Saçan Mor Enerji Küresi (Hollow Purple) */}
+                <div className="relative w-28 h-28 bg-[#AF52DE] rounded-full shadow-[0_0_60px_30px_rgba(175,82,222,0.9)] animate-pulse flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full border-4 border-white animate-[ping_0.4s_linear_infinite] opacity-80"></div>
+                  <div className="absolute w-12 h-12 bg-white rounded-full animate-ping opacity-90"></div>
                 </div>
               </div>
             )}
