@@ -18,16 +18,64 @@ export default function Home() {
   const handleForge = () => {
     if (!inputData) return;
     setLoading(true);
-    // 3 saniyelik Kuantum Hızlandırıcı yükleme süresi
+    // 5 saniyelik Epik Çarpışma ve Mor Patlama süresi
     setTimeout(() => {
       setLoading(false);
-      alert("Enerji Sıkışması Tamamlandı! Fandom Paneli Açılıyor...");
-    }, 3000);
+      alert("Aşırı Yüklenme Tamamlandı! Fandom Paneli Açılıyor...");
+    }, 5000);
   };
 
   return (
     <main className={`min-h-screen transition-colors duration-75 relative overflow-x-hidden font-sans ${isLightMode ? 'bg-[#F5F5F7] text-[#1D1D1F]' : 'bg-[#000000] text-white selection:bg-[#AF52DE] selection:text-white'}`}>
       
+      {/* 5 SANİYELİK EPİK ÇARPIŞMA (HOLLOW PURPLE) EFEKTİ İÇİN ÖZEL CSS */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes clashRed {
+            0% { width: 50%; }
+            20% { width: 75%; filter: brightness(1.2); }
+            40% { width: 25%; }
+            60% { width: 65%; filter: brightness(1.5); }
+            80% { width: 50%; }
+            100% { width: 50%; }
+          }
+          @keyframes clashBlue {
+            0% { width: 50%; }
+            20% { width: 25%; }
+            40% { width: 75%; filter: brightness(1.2); }
+            60% { width: 35%; filter: brightness(1.5); }
+            80% { width: 50%; }
+            100% { width: 50%; }
+          }
+          @keyframes purpleExplode {
+            0%, 80% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+            82% { transform: translate(-50%, -50%) scale(0.1); filter: brightness(2); }
+            90% { transform: translate(-50%, -50%) scale(1); filter: brightness(1); }
+            95% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+          }
+          @keyframes containerShake {
+            0% { transform: scale(0.98); }
+            10%, 30%, 50%, 70% { transform: scale(0.98) translateX(-8px); }
+            20%, 40%, 60% { transform: scale(0.98) translateX(8px); }
+            80% { transform: scale(0.98) translateX(0); }
+            82% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+          }
+          @keyframes whiteFlash {
+            0%, 90% { opacity: 0; }
+            94% { opacity: 1; }
+            100% { opacity: 0; }
+          }
+          @keyframes clashSpark {
+            0%, 80% { opacity: 0.8; transform: translate(-50%, -50%) scaleX(1); }
+            10%, 30%, 50%, 70% { transform: translate(-50%, -50%) scaleX(3) skewX(15deg); }
+            20%, 40%, 60% { transform: translate(-50%, -50%) scaleX(3) skewX(-15deg); }
+            82%, 100% { opacity: 0; }
+          }
+        `
+      }} />
+
       {/* --- SABİT ARKA PLAN --- */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
         <div className={`absolute top-[-5%] left-[-5%] w-[45vw] h-[45vw] bg-[#007AFF] rounded-full filter blur-[120px] animate-[pulse_6s_ease-in-out_infinite] transition-opacity duration-75 ${isLightMode ? 'opacity-10' : 'opacity-20'}`}></div>
@@ -85,45 +133,47 @@ export default function Home() {
             Aklındaki karmaşık fikirleri, saniyeler içinde kusursuz bir Fandom veritabanına dönüştür.
           </p>
 
-          <div className={`w-full max-w-2xl rounded-3xl relative overflow-hidden transition-all duration-[800ms] ease-in-out border backdrop-blur-2xl ${
+          <div className={`w-full max-w-2xl rounded-3xl relative overflow-hidden transition-all border backdrop-blur-2xl ${
               loading 
-                ? 'scale-95 border-[#AF52DE] shadow-[0_0_60px_rgba(175,82,222,0.8)]' 
+                ? 'border-[#AF52DE] shadow-[0_0_60px_rgba(175,82,222,0.8)] [animation:containerShake_5s_ease-in-out]' 
                 : isLightMode 
-                  ? 'bg-white/60 border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.15)] focus-within:border-white scale-100' 
-                  : 'bg-[#1C1C1E]/60 border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.4)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.25)] focus-within:border-white/20 scale-100'
+                  ? 'bg-white/60 border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.15)] focus-within:border-white' 
+                  : 'bg-[#1C1C1E]/60 border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.4)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.25)] focus-within:border-white/20'
             }`}>
             
             <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#007AFF] via-[#AF52DE] to-[#FF3B30] opacity-90"></div>
             
-            {/* KUANTUM PARÇACIK HIZLANDIRICI ANİMASYONU */}
+            {/* EPİK ÇARPIŞMA VE AŞIRI YÜKLENME ANİMASYONU */}
             {loading && (
-              <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none rounded-3xl bg-black/80 backdrop-blur-md overflow-hidden transition-all duration-300">
-                <div className="relative w-48 h-48 flex items-center justify-center">
-                  
-                  {/* Mavi Halka (Ters Yönde Döner) */}
-                  <div className="absolute w-[120%] h-[120%] rounded-full border-t-4 border-b-4 border-transparent border-l-[#007AFF] border-r-[#007AFF] shadow-[0_0_30px_rgba(0,122,255,0.6)] animate-[spin_1s_linear_infinite_reverse]"></div>
-                  
-                  {/* Kırmızı Halka (Düz Yönde Döner) */}
-                  <div className="absolute w-full h-full rounded-full border-l-4 border-r-4 border-transparent border-t-[#FF3B30] border-b-[#FF3B30] shadow-[0_0_30px_rgba(255,59,48,0.6)] animate-[spin_0.8s_linear_infinite]"></div>
+              <div className="absolute inset-0 z-30 bg-black overflow-hidden rounded-3xl">
+                
+                {/* Sol Taraf: Kırmızı İtme Gücü */}
+                <div className="absolute left-0 top-0 h-full bg-[#FF3B30] shadow-[20px_0_40px_#FF3B30] [animation:clashRed_5s_ease-in-out_forwards]"></div>
+                
+                {/* Sağ Taraf: Mavi Çekme Gücü */}
+                <div className="absolute right-0 top-0 h-full bg-[#007AFF] shadow-[-20px_0_40px_#007AFF] [animation:clashBlue_5s_ease-in-out_forwards]"></div>
+                
+                {/* Merkezdeki Çarpışma Kıvılcımları / Elektrik */}
+                <div className="absolute left-1/2 top-1/2 w-8 h-full bg-white opacity-80 blur-[4px] [animation:clashSpark_5s_ease-in-out_forwards]"></div>
 
-                  {/* Mor Plazma Enerjisi (Merkezde Sıkışan Çekirdek) */}
-                  <div className="absolute w-16 h-16 bg-[#AF52DE] rounded-full shadow-[0_0_50px_20px_rgba(175,82,222,0.9)] animate-[pulse_0.5s_ease-in-out_infinite] flex items-center justify-center">
-                    <div className="w-8 h-8 bg-white rounded-full animate-ping opacity-90"></div>
-                  </div>
-                  
-                </div>
+                {/* Mor Enerji Patlaması (Hollow Purple Overload) */}
+                <div className="absolute top-1/2 left-1/2 w-[300%] aspect-square rounded-full bg-[#AF52DE] mix-blend-screen [animation:purpleExplode_5s_ease-in-out_forwards]"></div>
 
-                {/* Alt Yazı Bilgisi */}
-                <div className="absolute bottom-6 text-[11px] font-mono tracking-widest text-[#AF52DE] animate-pulse">
-                  KUANTUM HIZLANDIRICI AKTİF... EVRENSEL ENERJİ SIKIŞTIRILIYOR...
+                {/* En Sondaki Beyaz Flaş Patlaması */}
+                <div className="absolute inset-0 bg-white [animation:whiteFlash_5s_ease-in-out_forwards] pointer-events-none"></div>
+
+                {/* Ortadaki Neon Uyarı Yazısı */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center text-sm md:text-lg font-black tracking-[0.4em] text-white z-40 drop-shadow-[0_0_10px_rgba(255,255,255,1)] animate-pulse">
+                  AŞIRI YÜKLENME<br/>
+                  <span className="text-[10px] md:text-xs text-[#AF52DE] tracking-widest mt-2 block">EVRENSEL ÇARPIŞMA GERÇEKLEŞİYOR</span>
                 </div>
               </div>
             )}
 
             <textarea
               rows={5}
-              className={`w-full bg-transparent text-lg p-8 focus:outline-none resize-none leading-relaxed transition-all duration-500 font-medium ${
-                loading ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+              className={`w-full bg-transparent text-lg p-8 focus:outline-none resize-none leading-relaxed font-medium ${
+                loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'
               } ${isLightMode ? 'text-[#1D1D1F] placeholder-[#86868B]' : 'text-[#F5F5F7] placeholder-[#8E8E93]'}`}
               placeholder="Evrenini anlatmaya başla..."
               value={inputData}
@@ -131,7 +181,7 @@ export default function Home() {
               disabled={loading}
             />
             
-            <div className={`flex justify-between items-center px-8 pb-6 pt-2 transition-all duration-500 ${loading ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
+            <div className={`flex justify-between items-center px-8 pb-6 pt-2 ${loading ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}`}>
               <span className={`text-xs font-bold tracking-widest uppercase transition-colors duration-75 ${isLightMode ? 'text-[#86868B]' : 'text-[#8E8E93]'}`}>
                 {inputData.length} KARAKTER
               </span>
