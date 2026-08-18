@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 export default function Home() {
   const [inputData, setInputData] = useState("");
@@ -7,12 +9,53 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLightMode, setIsLightMode] = useState(false);
 
+  // SUPABASE KULLANICI VE PROFİL DURUMLARI
+  const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 80);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // OTURUM VE PROFİL BİLGİLERİNİ ÇEKME
+  useEffect(() => {
+    async function getUserData() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        setUser(session.user);
+        
+        const { data } = await supabase
+          .from("profiles")
+          .select("username, avatar_url")
+          .eq("id", session.user.id)
+          .single();
+          
+        if (data) {
+          setProfile(data);
+        }
+      }
+    }
+    getUserData();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        const { data } = await supabase
+          .from("profiles")
+          .select("username, avatar_url")
+          .eq("id", session.user.id)
+          .single();
+        if (data) setProfile(data);
+      } else {
+        setProfile(null);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const handleForge = () => {
@@ -48,10 +91,28 @@ export default function Home() {
 
       {/* --- STICKY NAVBAR --- */}
       <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-75 px-8 py-4 flex justify-between items-center ${isScrolled ? (isLightMode ? 'bg-white/70 backdrop-blur-2xl shadow-sm border-b border-white/40 translate-y-0' : 'bg-[#1C1C1E]/70 backdrop-blur-2xl border-b border-white/10 translate-y-0') : 'opacity-0 pointer-events-none -translate-y-full'}`}>
-        <div className="font-black italic text-3xl tracking-tighter cursor-pointer flex items-center drop-shadow-md">
-          <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
-          <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm inline-block pr-4">LORE</span>
+        <div className="font-black italic text-3xl tracking-tighter cursor-pointer flex items-center drop-shadow-md gap-4">
+          <Link href="/" className="flex items-center">
+            <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
+            <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm inline-block pr-4">LORE</span>
+          </Link>
+
+          {/* GİRİŞ YAPILDIYSA LOGONUN YANINDA PROFİL AVATARI */}
+          {user && (
+            <Link href="/profile" className="flex items-center gap-2 group" title="Profilime Git">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#AF52DE] to-[#007AFF] p-[2px] shadow-lg group-hover:scale-105 transition-transform">
+                {profile?.avatar_url ? (
+                  <img src={profile.avatar_url} alt="PP" className="w-full h-full rounded-full object-cover bg-black" />
+                ) : (
+                  <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-white font-bold text-xs">
+                    {profile?.username ? profile.username.charAt(0).toUpperCase() : user.email.charAt(0).toUpperCase()}
+                  </div>
+                )}
+              </div>
+            </Link>
+          )}
         </div>
+
         <nav className={`hidden lg:flex items-center gap-8 font-semibold text-sm transition-colors duration-75 ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Özellikler</a>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Şablonlar</a>
@@ -59,16 +120,27 @@ export default function Home() {
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Kaynaklar</a>
           <a href="#" className={`transition-all hover:drop-shadow-[0_0_8px_rgba(175,82,222,0.5)] ${isLightMode ? 'hover:text-[#1D1D1F]' : 'hover:text-white'}`}>Fiyatlandırma</a>
         </nav>
-        <div className="hidden md:flex items-center gap-5 mr-20">
+
+        <div className="hidden md:flex items-center gap-5 mr-16">
           <a href="#" className={`transition-colors duration-75 hover:text-[#5865F2] hover:drop-shadow-[0_0_8px_rgba(88,101,242,0.5)] ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`} title="Discord Sunucumuza Katıl">
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
           </a>
           <div className={`w-px h-5 mx-1 ${isLightMode ? 'bg-gray-300' : 'bg-white/15'}`}></div>
-          <a href="#" className={`font-bold text-sm transition-colors duration-75 hover:text-[#AF52DE] ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>Giriş Yap</a>
-          <button className={`relative px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 flex items-center justify-center overflow-hidden group ${isLightMode ? 'bg-[#1D1D1F] text-white shadow-md' : 'bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.1)]'}`}>
-            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            <span className="relative z-10 group-hover:text-white transition-colors duration-300">Kayıt Ol</span>
-          </button>
+
+          {/* EĞER GİRİŞ YAPILMADIYSA GİRİŞ YAP VE KAYIT OL GÖSTER */}
+          {!user ? (
+            <>
+              <Link href="/login" className={`font-bold text-sm transition-colors duration-75 hover:text-[#AF52DE] ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>Giriş Yap</Link>
+              <Link href="/register" className={`relative px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 flex items-center justify-center overflow-hidden group ${isLightMode ? 'bg-[#1D1D1F] text-white shadow-md' : 'bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.1)]'}`}>
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="relative z-10 group-hover:text-white transition-colors duration-300">Kayıt Ol</span>
+              </Link>
+            </>
+          ) : (
+            <Link href="/profile" className={`text-sm font-bold px-4 py-2 rounded-xl border transition-all ${isLightMode ? 'border-gray-300 hover:bg-gray-100' : 'border-white/20 hover:bg-white/10'}`}>
+              Profilim
+            </Link>
+          )}
         </div>
       </header>
 
@@ -87,16 +159,34 @@ export default function Home() {
       <section className="relative z-10 min-h-screen flex flex-col items-center justify-center p-6">
         <div className="w-full max-w-4xl flex flex-col items-center justify-center gap-10 mt-[-5vh]">
           
-          <h1 className={`text-7xl md:text-9xl font-black italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none transition-opacity duration-75 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}>
-            <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
-            <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm inline-block pr-4">LORE</span>
-          </h1>
+          {/* LOGO VE SOLUNDAKİ PROFİL AVATARI */}
+          <div className="flex items-center gap-4">
+            <h1 className={`text-7xl md:text-9xl font-black italic tracking-tighter flex items-center justify-center drop-shadow-2xl select-none transition-opacity duration-75 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}>
+              <span className={isLightMode ? "text-[#1D1D1F]" : "text-white"}>exp</span>
+              <span className="bg-gradient-to-r from-[#FF3B30] via-[#AF52DE] to-[#007AFF] text-transparent bg-clip-text drop-shadow-sm inline-block pr-4">LORE</span>
+            </h1>
+
+            {/* ANA EKRAN ÜSTÜNDE GÖZÜKEN PROFİL AVATARI */}
+            {user && (
+              <Link href="/profile" className={`flex items-center gap-2 group transition-opacity duration-75 ${isScrolled ? 'opacity-0' : 'opacity-100'}`} title="Profilime Git">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-[#AF52DE] to-[#007AFF] p-[2px] shadow-2xl group-hover:scale-105 transition-transform">
+                  {profile?.avatar_url ? (
+                    <img src={profile.avatar_url} alt="PP" className="w-full h-full rounded-full object-cover bg-black" />
+                  ) : (
+                    <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-white font-bold text-lg">
+                      {profile?.username ? profile.username.charAt(0).toUpperCase() : user.email.charAt(0).toUpperCase()}
+                    </div>
+                  )}
+                </div>
+              </Link>
+            )}
+          </div>
 
           <p className={`text-lg md:text-xl max-w-xl text-center mx-auto font-medium mb-4 transition-colors duration-75 tracking-tight ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
             Aklındaki karmaşık fikirleri, saniyeler içinde kusursuz bir Fandom veritabanına dönüştür.
           </p>
 
-          {/* STANDART METİN KUTUSU (Patlama/Efekt Yok) */}
+          {/* STANDART METİN KUTUSU */}
           <div className={`w-full max-w-2xl rounded-3xl relative overflow-hidden transition-all border backdrop-blur-2xl ${
               isLightMode 
                 ? 'bg-white/60 border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] focus-within:shadow-[0_8px_40px_rgba(175,82,222,0.15)] focus-within:border-white' 
@@ -121,7 +211,6 @@ export default function Home() {
                 {inputData.length} KARAKTER
               </span>
               
-              {/* SADECE BURASI ANİMASYONLU - "EVRENİ YARAT" BUTONU */}
               <button
                 onClick={handleForge}
                 disabled={loading || inputData.length === 0}
@@ -172,7 +261,7 @@ export default function Home() {
             <h3 className={`text-2xl font-bold mb-4 tracking-tight ${isLightMode ? 'text-[#1D1D1F]' : 'text-white'}`}>Taslağını Yaz</h3>
             <p className={`text-base font-medium leading-relaxed ${isLightMode ? 'text-[#86868B]' : 'text-[#A1A1A6]'}`}>
               Kafandaki konsepti kısaca özetle. <br/><br/>
-              <span className={`italic ${isLightMode ? 'text-[#1D1D1F]/70' : 'text-white/70'}`}>"Örn: Tek kolu olan ve tek tarafı keskin kılıcıyla denizlere hükmeden bir korsan..."</span>
+              <span className={`italic ${isLightMode ? 'text-[#1D1D1F]/70' : 'text-white/70'}`}>"Örn: Tek kolu olan ve tek tarafı keskin kılıcıyla denizlere hükmedilen bir korsan..."</span>
             </p>
           </div>
 
